@@ -164,7 +164,7 @@ export default function Home() {
     <section className="home-explore" aria-labelledby="home-explore-title">
       <div className="container">
         <div className="home-explore-heading">
-          <div><p className="eyebrow dark">EXPLORE THE PROJECT</p><h2 id="home-explore-title">연구계획서로 살펴보는 FLAME-ARK</h2></div>
+          <div><p className="eyebrow dark">EXPLORE THE PROJECT</p><h2 id="home-explore-title">FLAME-ARK 주요 내용</h2></div>
           <p>연구의 목표부터 기술개발, AI 솔루션과 의료기관 실증까지 상세 내용을 확인할 수 있습니다.</p>
         </div>
         <div className="home-explore-grid">
