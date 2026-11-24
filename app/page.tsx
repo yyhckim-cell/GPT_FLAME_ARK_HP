@@ -3,6 +3,7 @@ import {
   Building2, Database, Layers3, LockKeyhole, Network, ShieldCheck,
 } from "lucide-react";
 import PartnerDirectory, { type Partner } from "@/components/partner-directory";
+import AnimatedHero from "@/components/animated-hero";
 import BrandLockup from "@/components/brand-lockup";
 import { researchPageLinks } from "@/components/research-subpage";
 
@@ -35,7 +36,7 @@ const partnerRecords: Partner[] = [
   { name: "차바이오텍", logo: "/partner-logos/cha-biotech.png" },
   { name: "차헬스케어", logo: "/partner-logos/cha-healthcare.png" },
   { name: "파이디지털헬스케어", logo: "/partner-logos/phi-digital-healthcare.png" },
-  { name: "하해호", logo: "/partner-logos/hahaeho.png", profileHref: "/partners/hahaeho" },
+  { name: "하해호", logo: "/partner-logos/hahaeho.png" },
   { name: "한림대학교", logo: "/partner-logos/hallym-university.png" },
   { name: "BK Instruments", logo: "/partner-logos/bk-instruments.png" },
 ];
@@ -145,7 +146,7 @@ export default function Home() {
       <details className="mobile-menu"><summary aria-label="메뉴 열기"><i/><i/><i/></summary><nav aria-label="모바일 메뉴">{menu.map(([label,href])=><a href={href} key={href}>{label}<ArrowUpRight size={16}/></a>)}<a href="/research"><LockKeyhole size={15}/> 연구자 전용</a></nav></details>
     </div></header>
     <section className="hero-graphic-section" aria-labelledby="hero-title">
-      <img className="hero-graphic-image" src="/flame-ark-hero-hd.png" alt="FLAME-ARK 병원 특화 연합학습 기반 멀티모달 의료AI 연구개발 소개 이미지" width="1672" height="941" fetchPriority="high" />
+      <AnimatedHero />
       <div className="hero-graphic-mobile-caption">
         <h1 id="hero-title">FLAME-ARK</h1>
         <p>병원 특화 연합학습 기반 멀티모달 파운데이션 모델 구축 및 AI 솔루션 개발</p>

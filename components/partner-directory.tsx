@@ -2,10 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, X } from "lucide-react";
+import HahehoProfile from "./haheho-profile";
 import PartnerProfileBody from "./partner-profile-body";
 import { partnerProfiles, type PartnerProfile } from "./partner-profiles";
 
-export type Partner = { name: string; logo: string; profileHref?: string };
+export type Partner = { name: string; logo: string };
 type ActivePartner = { profile: PartnerProfile; logo: string };
 
 export default function PartnerDirectory({ partners }: { partners: Partner[] }) {
@@ -13,7 +14,11 @@ export default function PartnerDirectory({ partners }: { partners: Partner[] }) 
   const [active, setActive] = useState<ActivePartner | null>(null);
 
   useEffect(() => {
-    if (active && !dialogRef.current?.open) dialogRef.current?.showModal();
+    if (!active) return;
+    if (!dialogRef.current?.open) dialogRef.current?.showModal();
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = overflow; };
   }, [active]);
 
   function hasIntroduction(name: string) {
@@ -41,13 +46,7 @@ export default function PartnerDirectory({ partners }: { partners: Partner[] }) 
 
   return <>
     <div className="partner-grid">
-      {partners.map((partner) => partner.profileHref ? (
-        <a className="partner-tile partner-tile-interactive" key={partner.name} href={partner.profileHref}>
-          <span className="partner-logo"><img src={partner.logo} alt="" loading="lazy" /></span>
-          <strong>{partner.name}</strong>
-          <span className="partner-action">기관 상세페이지 <ArrowUpRight size={13} aria-hidden="true" /></span>
-        </a>
-      ) : (
+      {partners.map((partner) => (
         <button
           type="button"
           className="partner-tile partner-tile-interactive"
@@ -66,11 +65,14 @@ export default function PartnerDirectory({ partners }: { partners: Partner[] }) 
     <dialog
       ref={dialogRef}
       className="partner-dialog"
-      aria-labelledby="partner-dialog-title"
+      aria-label={active?.profile.title ?? "기관 소개"}
       onClick={(event) => { if (event.target === event.currentTarget) closeDialog(); }}
       onClose={() => setActive(null)}
     >
-      {active && <div className="partner-dialog-content">
+      {active?.profile.title === "주식회사 하해호" ? <div className="haheho-modal-content">
+        <button autoFocus type="button" className="partner-dialog-close" onClick={closeDialog} aria-label="기관 소개 닫기"><X size={21} /></button>
+        <HahehoProfile />
+      </div> : active && <div className="partner-dialog-content">
         <header className="partner-dialog-header">
           <div className="partner-dialog-identity">
             <span className="partner-dialog-eyebrow">PARTNER PROFILE</span>
