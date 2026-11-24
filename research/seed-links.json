@@ -1,0 +1,21 @@
+[
+  {"group":"공통","title":"월간세미나 일정","description":"월간 연구 세미나 일정 및 안내","url":"https://app.notion.com/p/FLAME-ARK-1c427cd110c280919887cc7275619a5a","order":10,"icon":"calendar-days"},
+  {"group":"공통","title":"Q&A (주요안건 리스트업)","description":"연구 진행 중 질의 및 주요 안건","url":"https://app.notion.com/p/FLAME-ARK-1c427cd110c280919887cc7275619a5a","order":20,"icon":"messages-square"},
+  {"group":"공통","title":"전체 공지 자료 및 사진자료 및 사진","description":"전체 공지 및 이미지 자료","url":"https://app.notion.com/p/FLAME-ARK-1c427cd110c280919887cc7275619a5a","order":30,"icon":"megaphone"},
+  {"group":"공통","title":"행사 참석자 명단","description":"행사별 참석자 확인","url":"https://app.notion.com/p/FLAME-ARK-1c427cd110c280919887cc7275619a5a","order":40,"icon":"users"},
+  {"group":"공통","title":"전체 컨소시엄 일정","description":"사업단 및 참여기관 공동 일정","url":"https://app.notion.com/p/FLAME-ARK-1c427cd110c280919887cc7275619a5a","order":50,"icon":"calendar-range"},
+  {"group":"주관 채널","title":"주관 채널 (전체)","description":"1~5주관 공통 채널","url":"https://app.notion.com/p/24227cd110c2806a81f97092afaca4c","order":10,"icon":"network"},
+  {"group":"주관 채널","title":"1주관","description":"1주관 연구 정보, 회의록, 일정","url":"https://app.notion.com/p/1-24527cd110c28053984dc2ff96eb0646","order":20,"icon":"layers"},
+  {"group":"주관 채널","title":"2주관","description":"2주관 연구 정보, 회의록, 일정","url":"https://app.notion.com/p/2-24527cd110c2809c9c05c4c85c40b687","order":30,"icon":"layers"},
+  {"group":"주관 채널","title":"3주관","description":"3주관 연구 정보, 회의록, 일정","url":"https://app.notion.com/p/3-24527cd110c280b8b3e836f03855b","order":40,"icon":"layers"},
+  {"group":"주관 채널","title":"4주관","description":"4주관 연구 정보, 회의록, 일정","url":"https://app.notion.com/p/4-24527cd110c2804982e7e14ccaa3791a","order":50,"icon":"layers"},
+  {"group":"주관 채널","title":"5주관","description":"5주관 연구 정보, 회의록, 일정","url":"https://app.notion.com/p/5-24527cd110c280808424f38fb981d586","order":60,"icon":"layers"},
+  {"group":"협의체 채널","title":"협의체 채널 (전체)","description":"협의체 운영 공통 채널","url":"https://app.notion.com/p/24227cd110c2806b8927d2477fdffe0","order":10,"icon":"users-round"},
+  {"group":"협의체 채널","title":"연합학습 기술개선","description":"연합학습 기술 개선 협의체","url":"https://app.notion.com/p/24527cd110c2804ea445d42596f848d9","order":20,"icon":"workflow"},
+  {"group":"협의체 채널","title":"데이터분석관리","description":"데이터 분석 및 관리 협의체","url":"https://app.notion.com/p/24527cd110c280968bc3e2044c6ec292","order":30,"icon":"database"},
+  {"group":"협의체 채널","title":"AI안전윤리","description":"AI 안전 및 윤리 협의체","url":"https://app.notion.com/p/AI-24527cd110c28046bfdf21c2f73102b","order":40,"icon":"shield-check"},
+  {"group":"협의체 채널","title":"사용자경험","description":"사용자경험 연구 협의체","url":"https://app.notion.com/p/24527cd110c280a0b6a0c11b936d84e0","order":50,"icon":"heart-handshake"},
+  {"group":"자료","title":"서비스정의서","description":"서비스 요구사항 및 기능 정의서","url":"","order":10,"icon":"file-text"},
+  {"group":"자료","title":"데이터정의서","description":"데이터 수집 항목 및 표준화 문서","url":"","order":20,"icon":"file-spreadsheet"},
+  {"group":"자료","title":"홈페이지 기관별 콘텐츠","description":"참여기관 소개·개발서비스 자료","url":"","order":30,"icon":"folder-open"}
+]
