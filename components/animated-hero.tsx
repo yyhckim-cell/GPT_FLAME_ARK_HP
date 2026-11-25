@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { Pause, Play } from "lucide-react";
 
 export default function AnimatedHero() {
-  const sceneRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [paused, setPaused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(true);
@@ -17,30 +16,6 @@ export default function AnimatedHero() {
     preference.addEventListener("change", update);
     return () => preference.removeEventListener("change", update);
   }, []);
-
-  useEffect(() => {
-    const scene = sceneRef.current;
-    if (!scene || reducedMotion || paused) {
-      scene?.style.setProperty("--scene-progress", "0");
-      return;
-    }
-    let frame = 0;
-    const update = () => {
-      frame = 0;
-      const bounds = scene.getBoundingClientRect();
-      const progress = Math.max(0, Math.min(1, -bounds.top / bounds.height));
-      scene.style.setProperty("--scene-progress", String(progress));
-    };
-    const onScroll = () => {
-      if (!frame) frame = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      cancelAnimationFrame(frame);
-    };
-  }, [reducedMotion, paused]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -68,7 +43,7 @@ export default function AnimatedHero() {
     };
   }, [paused, reducedMotion, videoFailed]);
 
-  return <section ref={sceneRef} className="cinematic-hero" aria-labelledby="hero-title" data-paused={paused || reducedMotion}>
+  return <section className="cinematic-hero" aria-labelledby="hero-title" data-paused={paused || reducedMotion}>
     <div className="cinematic-scene" aria-hidden="true">
       <img className="cinematic-poster" src="/hero/research-campus.jpg" alt="" width="1920" height="1080" fetchPriority="high" />
       {!reducedMotion && !videoFailed && <video ref={videoRef} className="cinematic-video"
