@@ -18,6 +18,7 @@ export default function BrandLockup({ href = "/", biSrc = "/brand/flame-ark-new-
           width="2048"
           height="384"
         />
+        <span className="brand-project-name">병원 특화 연합학습 기반 멀티모달<br className="brand-project-break" /> 파운데이션 모델 구축 및 AI 솔루션 개발</span>
       </span>
     </a>
   );

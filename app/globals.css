@@ -654,3 +654,47 @@ a:focus-visible,summary:focus-visible { outline:2px solid var(--teal); outline-o
 @media(max-width:760px) {
  .home-page > .home-explore { margin-top:-18px; border-radius:20px 20px 0 0; }
 }
+
+.brand-project-name { display:none; }
+.site-header .brand-ci-wrap { height:auto; flex-direction:column; align-items:flex-start; gap:7px; }
+.site-header .brand-project-name { display:block; color:#d8e9ef; font-size:12px; line-height:1.5; font-weight:500; letter-spacing:-.025em; word-break:keep-all; }
+.site-header .header-inner { min-height:110px; height:auto; padding-block:16px; gap:24px; }
+.site-header .desktop-nav { gap:clamp(12px,1.5vw,24px); }
+.site-header .brand-ci { width:174px; }
+.footer-brand-button { font:inherit; font-size:13px; font-weight:650; background:transparent; color:#c4eee9; border:1px solid #729caa; padding:9px 13px; border-radius:5px; cursor:pointer; }
+.footer-brand-button:hover { background:#244354; }
+.footer-brand-button:focus-visible { outline:3px solid #84e7d6; outline-offset:4px; }
+.brand-identity-dialog { inset:0; margin:auto; width:min(1120px,calc(100vw - 40px)); max-width:none; max-height:calc(100dvh - 40px); padding:48px 0 30px; border:1px solid #d6e7e7; border-radius:18px; color:#193349; background:#fff; box-shadow:0 24px 80px #061d3e55; overflow:auto; }
+.brand-identity-dialog::backdrop { background:#051d32b8; backdrop-filter:blur(6px); }
+.brand-identity-close { position:absolute; top:14px; right:16px; display:grid; place-items:center; width:38px; height:38px; border:1px solid #b6cdd5; border-radius:50%; color:#244758; background:#fff; cursor:pointer; }
+.brand-identity-close:focus-visible { outline:3px solid #138c8d; outline-offset:2px; }
+.brand-identity-dialog .container { width:calc(100% - 64px); }
+.brand-identity-dialog .brand-story-heading h2 { font-size:clamp(24px,3vw,34px); }
+.brand-identity-dialog .brand-story-heading { margin-bottom:28px; }
+.brand-identity-dialog .brand-story-layout { gap:30px; }
+.brand-identity-dialog .brand-story-symbol { max-width:180px; }
+.brand-identity-dialog .brand-story-wordmark { max-width:230px; }
+.brand-identity-dialog .brand-story-showcase { padding:28px 20px; }
+.brand-identity-dialog .brand-story-small { font-size:11px; line-height:1.5; }
+.brand-identity-dialog .brand-story-lead { font-size:16px; }
+.brand-identity-dialog .brand-meaning-list h3 { font-size:16px; }
+.brand-identity-dialog .brand-meaning-list p { font-size:14px; }
+@media(max-width:1250px) {
+ .site-header .desktop-nav { display:none; }
+ .site-header .mobile-menu { display:block; margin-left:0; }
+ .site-header .header-contact { margin-left:auto; }
+}
+@media(max-width:760px) {
+ .site-header .header-inner { min-height:104px; padding-block:12px; gap:10px; }
+ .site-header .brand { gap:8px; min-width:0; flex-shrink:1; }
+ .site-header .brand-bi { width:32px; height:32px; }
+ .site-header .brand-ci { width:135px; }
+ .site-header .brand-project-name { font-size:10px; line-height:1.45; max-width:190px; }
+ .site-header .brand-project-break { display:none; }
+ .site-header .header-contact { font-size:10px; padding-inline:7px; gap:4px; flex-shrink:0; }
+ .site-header .header-contact svg { display:none; }
+ .site-header .mobile-menu summary { width:28px; }
+ .brand-identity-dialog { width:calc(100vw - 20px); max-height:calc(100dvh - 20px); border-radius:12px; padding-top:58px; }
+ .brand-identity-dialog .container { width:calc(100% - 36px); }
+ .brand-identity-dialog .brand-story-layout { grid-template-columns:1fr; }
+}
