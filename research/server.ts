@@ -1,5 +1,10 @@
 import html from "./index.html?raw";
 import seeds from "./seed-links.json";
+import { projectName, siteNavigation } from "../components/site-navigation";
+
+const portalHtml = html.replaceAll("{{PROJECT_NAME}}", projectName).replaceAll(
+  "{{SITE_NAVIGATION}}", siteNavigation.map(({ href, label }) => `<a href="${href}">${label}</a>`).join(""),
+);
 
 const groups = ["공통", "주관 채널", "협의체 채널", "자료"];
 const productionCookie = "__Secure-flame-ark-research";
@@ -120,7 +125,7 @@ async function login(request: Request, db: D1Database, env: Cloudflare.Env, now:
   const role = input.role;
   if (role !== "researcher" && role !== "admin") throw new HttpError(400, "로그인 유형을 확인해 주세요.");
   const password = field(input, "password", 1, 300);
-  const client = await digest(request.headers.get("CF-Connecting-IP") ?? "local");
+  const client = await digest(role + ":" + (request.headers.get("CF-Connecting-IP") ?? "local"));
   const cutoff = now - 600;
   const attempt = await db.prepare(
     "INSERT INTO research_attempts(client,started,count) VALUES(?,?,1) ON CONFLICT(client) DO UPDATE SET " +
@@ -292,7 +297,7 @@ export function handleResearch(request: Request, env: Cloudflare.Env) {
   if (path === "/internal") return Response.redirect(new URL("/research", url), 302);
   if (path === "/admin") return Response.redirect(new URL("/research/admin", url), 302);
   if (path === "/research" || path === "/research/admin") {
-    return new Response(request.method === "HEAD" ? null : html, {
+    return new Response(request.method === "HEAD" ? null : portalHtml, {
       headers: { ...headers, "Content-Type": "text/html; charset=utf-8" },
     });
   }

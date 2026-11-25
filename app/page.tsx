@@ -1,18 +1,13 @@
+import SectionAnchor from "@/components/section-anchor";
+import SiteHeader from "@/components/site-header";
+import SiteFooter from "@/components/site-footer";
 import {
   ArrowDown, ArrowRight, ArrowUpRight, BrainCircuit, CalendarRange,
   Building2, Database, Layers3, LockKeyhole, Network, ShieldCheck,
 } from "lucide-react";
 import PartnerDirectory, { type Partner } from "@/components/partner-directory";
 import AnimatedHero from "@/components/animated-hero";
-import BrandIdentityDialog from "@/components/brand-identity-dialog";
-import BrandIdentityContent from "@/components/brand-identity-content";
-import BrandLockup from "@/components/brand-lockup";
 import { researchPageLinks } from "@/components/research-subpage";
-
-const menu = [
-  ["사업 소개", "/project"], ["핵심기술", "/technology"], ["AI 솔루션", "/solutions"],
-  ["실증·검증", "/validation"], ["추진체계", "/consortium"], ["참여기관", "#partners"], ["성과·소식", "#news"],
-];
 
 // Participating institution names are transcribed from the supplied logo archive.
 // The display order is Korean alphabetical order, ignoring corporate prefixes.
@@ -72,9 +67,7 @@ const tracks = [
   },
 ];
 
-function Brand() {
-  return <BrandLockup href="#top" />;
-}
+
 
 function Heading({eyebrow, title, detail}: {eyebrow:string; title:string; detail?:string}) {
   return <div className="heading">
@@ -140,12 +133,8 @@ function NetworkVisual() {
 
 export default function Home() {
   return <main id="top" className="home-page">
-    <header className="site-header"><div className="container header-inner">
-      <BrandLockup href="#top" biSrc="/brand/flame-ark-home-header-bi.png" />
-      <nav className="desktop-nav" aria-label="주 메뉴">{menu.map(([label,href])=><a href={href} key={href}>{label}</a>)}</nav>
-      <a className="header-contact" href="/research"><LockKeyhole size={14}/> 연구자 전용 <ArrowUpRight size={15}/></a>
-      <details className="mobile-menu"><summary aria-label="메뉴 열기"><i/><i/><i/></summary><nav aria-label="모바일 메뉴">{menu.map(([label,href])=><a href={href} key={href}>{label}<ArrowUpRight size={16}/></a>)}<a href="/research"><LockKeyhole size={15}/> 연구자 전용</a></nav></details>
-    </div></header>
+    <SectionAnchor />
+    <SiteHeader home />
     <AnimatedHero />
 
     <section className="home-explore" aria-labelledby="home-explore-title">
@@ -193,7 +182,6 @@ export default function Home() {
         <div className="org-branches"><div className="org-card"><span>RESEARCH TRACK 01</span><strong>멀티모달 데이터 및<br/>파운데이션 모델</strong><small>데이터 표준화 · 모델 개발</small></div><div className="org-card"><span>RESEARCH TRACK 02</span><strong>연합학습 기반<br/>의료서비스 플랫폼</strong><small>협력학습 기술 · 플랫폼 구축</small></div><div className="org-card"><span>RESEARCH TRACK 03</span><strong>의료AI 솔루션<br/>개발 및 실증</strong><small>서비스 적용 · 검증 · 고도화</small></div></div>
         <div className="org-bottom"><Building2 size={22}/><div><strong>참여 연구기관 및 실증 의료기관</strong><small>기관별 세부 역할 및 참여구성 등록 예정</small></div></div>
       </div>
-      <p className="chart-note">※ 위 도식은 홈페이지 구성을 위한 개념도이며, 최종 공식 추진체계도로 확정된 것은 아닙니다.</p>
       <a href="/consortium" className="home-section-link">5개 주관 연구영역 살펴보기 <ArrowUpRight size={18}/></a>
     </div></section>
 
@@ -213,9 +201,6 @@ export default function Home() {
       <div className="empty-news"><span>NOTICE / PUBLICATIONS / EVENTS</span><p>게시된 소식이 없습니다.</p><small>공개 가능한 자료 확인 후 순차적으로 업데이트됩니다.</small><ArrowUpRight size={24}/></div>
     </div></section>
 
-    <footer id="contact" className="footer"><div className="container">
-      <div className="footer-main"><div><Brand/><p>FLAME-ARK 솔루션 개발 실증: 병원 특화 연합학습 기반<br/>멀티모달 파운데이션 모델 구축 및 AI 솔루션 개발</p></div><div className="footer-detail"><span>PROJECT PERIOD</span><strong>2025. 04. 01 - 2029. 12. 31</strong><span>CONTACT</span><strong>문의처 확인 후 등록 예정</strong></div></div>
-      <div className="footer-bottom"><span>© FLAME-ARK Research Project. All rights reserved.</span><span>본 페이지는 검토를 위한 디자인 시안입니다.</span><BrandIdentityDialog><BrandIdentityContent /></BrandIdentityDialog><a href="/research"><LockKeyhole size={12}/> 연구자 전용</a><a href="#top">BACK TO TOP ↑</a></div>
-    </div></footer>
+    <SiteFooter />
   </main>;
 }

@@ -1,3 +1,5 @@
+import SiteHeader from "./site-header";
+import SiteFooter from "./site-footer";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ArrowUpRight, LockKeyhole, Network, ShieldCheck } from "lucide-react";
 import BrandLockup from "@/components/brand-lockup";
@@ -250,23 +252,7 @@ export default function ResearchSubpage({ page }: { page: ResearchPageKey }) {
   const next = researchPageLinks[(currentIndex + 1) % researchPageLinks.length];
 
   return <main id="top" className="detail-page">
-    <header className="site-header">
-      <div className="container header-inner">
-        <BrandLockup />
-        <nav className="desktop-nav" aria-label="연구 상세 페이지">
-          {researchPageLinks.map((item)=><Link key={item.slug} href={"/" + item.slug} aria-current={item.slug === page ? "page" : undefined}>{item.title}</Link>)}
-        </nav>
-        <a className="header-contact" href="/research"><LockKeyhole size={14}/> 연구자 전용 <ArrowUpRight size={15}/></a>
-        <details className="mobile-menu">
-          <summary aria-label="메뉴 열기"><i/><i/><i/></summary>
-          <nav aria-label="모바일 상세 메뉴">
-            <Link href="/">메인 화면</Link>
-            {researchPageLinks.map((item)=><Link key={item.slug} href={"/" + item.slug}>{item.title}<ArrowUpRight size={15}/></Link>)}
-            <a href="/research"><LockKeyhole size={14}/> 연구자 전용</a>
-          </nav>
-        </details>
-      </div>
-    </header>
+    <SiteHeader currentPath={"/" + page} />
 
     <section className={hideIntro ? "detail-hero detail-hero-compact" : "detail-hero"}>
       <div className="container detail-hero-layout">
@@ -325,12 +311,6 @@ export default function ResearchSubpage({ page }: { page: ResearchPageKey }) {
       </div>
     </section>
 
-    <footer className="detail-footer">
-      <div className="container">
-        <div><span>FLAME-ARK</span><p>병원 특화 연합학습 기반 멀티모달 파운데이션 모델 구축 및 AI 솔루션 개발</p></div>
-        <div><ShieldCheck size={16}/><span>본 내용은 연구계획서에 근거한 안내 시안이며 연구 완료 또는 서비스 상용화를 뜻하지 않습니다.</span></div>
-        <Link href="/#partners">참여기관 보기 <ArrowUpRight size={14}/></Link>
-      </div>
-    </footer>
+    <SiteFooter />
   </main>;
 }

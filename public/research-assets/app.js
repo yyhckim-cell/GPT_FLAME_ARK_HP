@@ -3,7 +3,7 @@ const $ = (id) => document.getElementById(id);
 const GROUPS = ['공통','주관 채널','협의체 채널','자료'];
 const GROUP_ICONS = {'전체':'◫','공통':'◈','주관 채널':'▣','협의체 채널':'◎','자료':'▤'};
 const GROUP_DESC = {'전체':'연구에 필요한 최신 안내 및 채널 링크를 확인하세요.','공통':'전체 연구진이 함께 확인하는 공지와 일정입니다.','주관 채널':'1~5주관별 협업 채널을 확인하세요.','협의체 채널':'연구 협의체별 논의와 자료를 확인하세요.','자료':'연구개발에 필요한 공통 서식을 확인하세요.'};
-let state = {role:'researcher', selectedRole:'researcher', csrf:'', links:[], adminLinks:[], filter:'전체', search:'', view:'dashboard', edit:null, confirmCallback:null};
+let state = {role:'researcher', selectedRole:'researcher', csrf:'', links:[], adminLinks:[], filter:'전체', search:'', view:'dashboard', edit:null, confirmCallback:null, submitting:false};
 
 async function api(path, options={}) {
   const init = {method:options.method||'GET',credentials:'same-origin',headers:{'Accept':'application/json'}};
@@ -42,19 +42,35 @@ for(const b of document.querySelectorAll('.role-option')){
     state.selectedRole=b.dataset.role;
     document.querySelectorAll('.role-option').forEach(x=>{const active=x===b;x.classList.toggle('selected',active);x.setAttribute('aria-selected',String(active));});
     $('login-error').textContent='';
-    document.querySelector('#login-form .main-button').firstChild.textContent=state.selectedRole==='admin'?'관리자 페이지 입장 ':'연구자 공간 입장 ';
+    $('login-submit-label').textContent=state.selectedRole==='admin'?'관리자 페이지 입장':'연구자 공간 입장';
+    $('login-password').placeholder=state.selectedRole==='admin'?'관리자 비밀번호':'공유받은 연구자 비밀번호';
     $('login-password').focus();
   });
 }
 $('toggle-password').addEventListener('click',()=>{const input=$('login-password'); const b=$('toggle-password'); input.type=input.type==='password'?'text':'password';b.textContent=input.type==='password'?'보기':'숨기기';});
 $('login-form').addEventListener('submit',async(e)=>{
-  e.preventDefault(); $('login-error').textContent='';
+  e.preventDefault();
+  if (state.submitting) return;
+  state.submitting=true;
+  $('login-error').textContent='';
+  const submit=document.querySelector('#login-form .main-button');
+  submit.disabled=true;
+  submit.setAttribute('aria-busy','true');
+  $('login-submit-label').textContent='로그인 확인 중';
+  document.querySelectorAll('.role-option').forEach(button=>{button.disabled=true;});
   const password=$('login-password').value;
   try{
     await api('/api/research/login',{method:'POST',body:{role:state.selectedRole,password}});
     $('login-password').value='';
     await loadSession(true);
   }catch(err){$('login-error').textContent=err.message;}
+  finally {
+    state.submitting=false;
+    submit.disabled=false;
+    submit.removeAttribute('aria-busy');
+    document.querySelectorAll('.role-option').forEach(button=>{button.disabled=false;});
+    $('login-submit-label').textContent=state.selectedRole==='admin'?'관리자 페이지 입장':'연구자 공간 입장';
+  }
 });
 $('logout-btn').addEventListener('click',async()=>{
   try{await api('/api/research/logout',{method:'POST'});}
@@ -64,7 +80,7 @@ $('logout-btn').addEventListener('click',async()=>{
 
 async function loadSession(expectLogin = false){
   const ses=await api('/api/research/session');
-  if (!ses.authenticated && expectLogin) throw new Error('로그인 세션을 유지할 수 없습니다. 현재 미리보기 주소를 다시 열어 주세요.');
+  if (!ses.authenticated && expectLogin) throw new Error('로그인 세션을 유지할 수 없습니다. 브라우저의 쿠키 허용 설정을 확인한 뒤 다시 시도해 주세요.');
   if (!ses.authenticated){$('login-screen').classList.remove('hidden');$('app-screen').classList.add('hidden');return;}
   state.role=ses.role;state.csrf=ses.csrf;
   $('role-label').textContent=ses.role==='admin'?'관리자':'연구자';

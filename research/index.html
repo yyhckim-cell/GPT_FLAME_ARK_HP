@@ -10,9 +10,22 @@
   <script src="/research-assets/app.js" defer></script>
 </head>
 <body>
+  <header class="portal-site-header">
+    <div class="portal-site-inner">
+      <a class="portal-site-brand" href="/" aria-label="FLAME-ARK 홈">
+        <img src="/brand/flame-ark-home-header-bi.png" alt="" width="44" height="44">
+        <span><small>{{PROJECT_NAME}}</small><strong>FLAME-ARK</strong></span>
+      </a>
+      <nav class="portal-site-nav" aria-label="주 메뉴">{{SITE_NAVIGATION}}</nav>
+      <details class="portal-site-menu">
+        <summary aria-label="메뉴 열기"><span></span><span></span><span></span></summary>
+        <nav aria-label="전체 메뉴"><a href="/">메인 화면</a>{{SITE_NAVIGATION}}<a href="/research">연구자 전용</a></nav>
+      </details>
+    </div>
+  </header>
   <div id="login-screen" class="login-shell">
     <div class="login-showcase">
-      <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+      <div class="ambient ambient-a"></div>
       <a class="brand brand-on-dark" href="/" aria-label="FLAME-ARK 연구자 전용 홈">
         <img src="/brand/flame-ark-new-logo.png" alt="FLAME-ARK BI" class="brand-logo">
         <span class="brand-text">FLAME-ARK<span>RESEARCH PORTAL</span></span>
@@ -21,27 +34,26 @@
         <span class="eyebrow">SECURE RESEARCH WORKSPACE</span>
         <h1>함께 연구하고<br><em>하나로 연결하다.</em></h1>
         <p>FLAME-ARK 참여 연구기관을 위한 공동 협업 공간.<br>일정과 주요 안내, 연구자료, 협의체 채널을 한곳에서 확인하세요.</p>
-        <div class="pills"><span>5개 주관 연구영역</span><span>4개 협의체</span><span>연구자료 허브</span></div>
+        <a class="portal-home-link" href="/">홈페이지로 돌아가기</a>
       </div>
-      <div class="login-foot">FLAME-ARK SOLUTION DEVELOPMENT & VALIDATION</div>
     </div>
     <div class="login-side">
       <div class="login-form-card">
         <span class="login-step">RESEARCHER ACCESS</span>
         <h2>연구자 전용 로그인</h2>
-        <p>승인된 참여 연구진만 접근할 수 있습니다.</p>
+        <p>참여 연구진에게 안내된 비밀번호로 로그인해 주세요.</p>
         <div class="role-switch" role="tablist" aria-label="로그인 유형">
           <button type="button" class="role-option selected" data-role="researcher" role="tab" aria-selected="true">연구자</button>
           <button type="button" class="role-option" data-role="admin" role="tab" aria-selected="false">관리자</button>
         </div>
-        <form id="login-form" autocomplete="off">
+        <form id="login-form">
           <label for="login-password">비밀번호</label>
           <div class="password-field">
-            <input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="비밀번호 입력" required>
+            <input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="공유받은 연구자 비밀번호" required aria-describedby="login-error">
             <button type="button" id="toggle-password" aria-label="비밀번호 표시" title="비밀번호 표시">보기</button>
           </div>
           <div id="login-error" class="error-message" role="alert" aria-live="polite"></div>
-          <button class="main-button" type="submit">연구자 공간 입장 <span aria-hidden="true">→</span></button>
+          <button class="main-button" type="submit"><span id="login-submit-label">연구자 공간 입장</span></button>
         </form>
         <div class="login-hint"><span class="lock-mini">●</span> 기관 연구자료는 권한을 확인한 후 이용해 주세요.</div>
       </div>
@@ -125,5 +137,6 @@
   <div id="dialog-backdrop" class="dialog-backdrop hidden" role="presentation">
     <section class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title" tabindex="-1"><button type="button" class="dialog-close" id="dialog-close" aria-label="닫기">×</button><div class="dialog-symbol">i</div><h2 id="dialog-title">안내</h2><p id="dialog-message"></p><div id="dialog-actions"><button id="dialog-confirm" type="button" class="main-button">확인</button></div></section>
   </div>
+  <footer class="portal-public-footer"><a href="/#partners">참여기관 보기</a><a href="/">FLAME-ARK 홈페이지</a></footer>
 </body>
 </html>
