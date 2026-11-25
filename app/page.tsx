@@ -137,30 +137,14 @@ function NetworkVisual() {
 }
 
 export default function Home() {
-  return <main id="top">
-    <div className="preview-ribbon">FLAME-ARK WEBSITE <span>·</span> FIRST DESIGN PREVIEW</div>
+  return <main id="top" className="home-page">
     <header className="site-header"><div className="container header-inner">
       <BrandLockup href="#top" biSrc="/brand/flame-ark-home-header-bi.png" />
       <nav className="desktop-nav" aria-label="주 메뉴">{menu.map(([label,href])=><a href={href} key={href}>{label}</a>)}</nav>
       <a className="header-contact" href="/research"><LockKeyhole size={14}/> 연구자 전용 <ArrowUpRight size={15}/></a>
       <details className="mobile-menu"><summary aria-label="메뉴 열기"><i/><i/><i/></summary><nav aria-label="모바일 메뉴">{menu.map(([label,href])=><a href={href} key={href}>{label}<ArrowUpRight size={16}/></a>)}<a href="/research"><LockKeyhole size={15}/> 연구자 전용</a></nav></details>
     </div></header>
-    <section className="hero-graphic-section" aria-labelledby="hero-title">
-      <AnimatedHero />
-      <div className="hero-graphic-mobile-caption">
-        <h1 id="hero-title">FLAME-ARK</h1>
-        <p>병원 특화 연합학습 기반 멀티모달 파운데이션 모델 구축 및 AI 솔루션 개발</p>
-      </div>
-      <div className="hero-graphic-toolbar">
-        <div className="container hero-graphic-toolbar-inner">
-          <p>2025.04 - 2029.12 <span>HOSPITAL-SPECIFIC FEDERATED MEDICAL AI</span></p>
-          <div className="hero-graphic-actions">
-            <a href="#about">프로젝트 알아보기 <ArrowUpRight size={16}/></a>
-            <a href="#research">연구개발 분야 <ArrowRight size={16}/></a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <AnimatedHero />
 
     <section className="home-explore" aria-labelledby="home-explore-title">
       <div className="container">

@@ -1,37 +1,105 @@
 "use client";
 
-import { useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Pause, Play } from "lucide-react";
 
-const connections = [
-  { x: 18, y: 28 },
-  { x: 40, y: 28 },
-  { x: 11, y: 53 },
-  { x: 47, y: 53 },
-];
-
 export default function AnimatedHero() {
+  const sceneRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [paused, setPaused] = useState(false);
-  return <div className="hero-motion" data-paused={paused}>
-    <img className="hero-graphic-image" src="/flame-ark-hero-hd.png"
-      alt="FLAME-ARK 병원 특화 연합학습 기반 멀티모달 의료AI 연구개발 소개 이미지"
-      width="1672" height="941" fetchPriority="high" />
-    <div className="hero-network-light" aria-hidden="true">
-      {connections.map((point, index) => <span key={index}
-        className="hero-data-flow"
-        style={{
-          "--start-x": point.x + "%",
-          "--start-y": point.y + "%",
-          "--delay": index * -1.4 + "s",
-        } as CSSProperties} />)}
-      <span className="hero-model-pulse" />
-      <span className="hero-model-halo" />
+  const [reducedMotion, setReducedMotion] = useState(true);
+  const [videoFailed, setVideoFailed] = useState(false);
+
+  useEffect(() => {
+    const preference = matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReducedMotion(preference.matches);
+    update();
+    preference.addEventListener("change", update);
+    return () => preference.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    const scene = sceneRef.current;
+    if (!scene || reducedMotion || paused) {
+      scene?.style.setProperty("--scene-progress", "0");
+      return;
+    }
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const bounds = scene.getBoundingClientRect();
+      const progress = Math.max(0, Math.min(1, -bounds.top / bounds.height));
+      scene.style.setProperty("--scene-progress", String(progress));
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }, [reducedMotion, paused]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || videoFailed) return;
+    if (paused || reducedMotion) {
+      video.pause();
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !document.hidden) {
+        video.play().catch(() => { /* The poster remains visible when autoplay is unavailable. */ });
+      } else {
+        video.pause();
+      }
+    });
+    const onVisibilityChange = () => {
+      if (document.hidden) video.pause();
+      else if (video.getBoundingClientRect().bottom > 0) video.play().catch(() => {});
+    };
+    observer.observe(video);
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    };
+  }, [paused, reducedMotion, videoFailed]);
+
+  return <section ref={sceneRef} className="cinematic-hero" aria-labelledby="hero-title" data-paused={paused || reducedMotion}>
+    <div className="cinematic-scene" aria-hidden="true">
+      <img className="cinematic-poster" src="/hero/research-campus.jpg" alt="" width="1920" height="1080" fetchPriority="high" />
+      {!reducedMotion && !videoFailed && <video ref={videoRef} className="cinematic-video"
+        autoPlay muted loop playsInline preload="metadata" poster="/hero/research-campus.jpg"
+        onError={() => setVideoFailed(true)}>
+        <source src="/hero/research-campus.mp4" type="video/mp4" />
+      </video>}
+      <div className="cinematic-glow" />
+      <div className="cinematic-wash" />
     </div>
-    <button type="button" className="hero-motion-control"
-      onClick={() => setPaused(!paused)} aria-pressed={paused}
-      aria-label={paused ? "배너 애니메이션 재생" : "배너 애니메이션 정지"}>
-      {paused ? <Play size={15} /> : <Pause size={15} />}
-      <span>{paused ? "움직임 재생" : "움직임 정지"}</span>
-    </button>
-  </div>;
+    <div className="container cinematic-content">
+      <p className="cinematic-eyebrow">FLAME-ARK · MEDICAL AI RESEARCH</p>
+      <h1 id="hero-title">병원을 연결하고,<br /><span>의료AI를 발전시키다.</span></h1>
+      <p className="cinematic-description">의료데이터의 가치를 연결하는 병원 특화 연합학습.<br className="cinematic-desktop-break" />
+        멀티모달 파운데이션 모델부터 의료현장의 AI 솔루션까지,<br className="cinematic-desktop-break" />
+        FLAME-ARK가 함께 연구하고 검증합니다.</p>
+      <div className="cinematic-actions">
+        <a className="cinematic-primary" href="/project">프로젝트 살펴보기</a>
+        <a className="cinematic-secondary" href="/technology">핵심 연구기술</a>
+      </div>
+    </div>
+    <div className="container cinematic-footer">
+      <p>FEDERATED LEARNING <span>·</span> CONNECTED MEDICAL INTELLIGENCE</p>
+      <div className="cinematic-footer-actions">
+        <a href="#home-explore-title">FLAME-ARK 주요 내용</a>
+        {!reducedMotion && !videoFailed && <button type="button" onClick={() => setPaused(!paused)}
+          className="cinematic-control" aria-pressed={paused}
+          aria-label={paused ? "배경 움직임 재생" : "배경 움직임 정지"}>
+          {paused ? <Play size={16} /> : <Pause size={16} />}
+        </button>}
+      </div>
+    </div>
+  </section>;
 }
