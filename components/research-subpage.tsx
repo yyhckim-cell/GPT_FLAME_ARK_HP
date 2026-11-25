@@ -250,7 +250,6 @@ export default function ResearchSubpage({ page }: { page: ResearchPageKey }) {
   const next = researchPageLinks[(currentIndex + 1) % researchPageLinks.length];
 
   return <main id="top" className="detail-page">
-    <div className="preview-ribbon">FLAME-ARK WEBSITE <span>·</span> RESEARCH PLAN PREVIEW</div>
     <header className="site-header">
       <div className="container header-inner">
         <BrandLockup />
