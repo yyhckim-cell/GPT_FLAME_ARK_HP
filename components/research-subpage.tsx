@@ -272,11 +272,7 @@ export default function ResearchSubpage({ page }: { page: ResearchPageKey }) {
       </div>
     </section>
 
-    <nav className="detail-subnav" aria-label="연구 상세 페이지 목록">
-      <div className="container detail-subnav-inner">
-        {researchPageLinks.map((item) => <Link key={item.slug} href={"/" + item.slug} className={item.slug === page ? "is-active" : ""} aria-current={item.slug === page ? "page" : undefined}>{item.title}</Link>)}
-      </div>
-    </nav>
+
 
     {content.sections.map((section, sectionIndex) => <section className="detail-section" key={section.eyebrow}>
       <div className="container">

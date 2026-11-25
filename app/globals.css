@@ -702,7 +702,7 @@ a:focus-visible,summary:focus-visible { outline:2px solid var(--teal); outline-o
 /* Keep the full project name on one line below the wordmark. */
 .site-header .brand-project-name { white-space:nowrap; max-width:none; font-size:12px; }
 .site-header .brand { min-width:0; }
-@media(max-width:1500px) {
+@media(max-width:1250px) {
  .site-header .desktop-nav { display:none; }
  .site-header .mobile-menu { display:block; margin-left:0; }
  .site-header .header-contact { margin-left:auto; }

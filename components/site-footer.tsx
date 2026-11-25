@@ -1,7 +1,7 @@
 import BrandLockup from "./brand-lockup";
 import BrandIdentityDialog from "./brand-identity-dialog";
 import BrandIdentityContent from "./brand-identity-content";
-import { projectName, siteNavigation } from "./site-navigation";
+import { projectName } from "./site-navigation";
 
 export default function SiteFooter() {
   return <footer id="contact" className="footer">
@@ -13,9 +13,7 @@ export default function SiteFooter() {
           <span>CONTACT</span><strong>문의처 확인 후 등록 예정</strong>
         </div>
       </div>
-      <nav className="footer-navigation" aria-label="하단 메뉴">
-        {siteNavigation.map(({ label, href }) => <a key={href} href={href}>{label === "참여기관" ? "참여기관 보기" : label}</a>)}
-      </nav>
+      <div className="footer-navigation"><a href="/#partners">참여기관 보기</a></div>
       <div className="footer-bottom">
         <span>© FLAME-ARK Research Project. All rights reserved.</span>
         <BrandIdentityDialog><BrandIdentityContent /></BrandIdentityDialog>
