@@ -44,8 +44,8 @@ export default function AnimatedHero() {
   return <section className="cinematic-hero" aria-labelledby="hero-title" data-paused={reducedMotion}>
     <div className="cinematic-scene" aria-hidden="true">
       <div ref={journeyRef} className="cinematic-journey">
-        {["main-clinical", "main-connected", "main-federated"].map((image, index) => <div className="cinematic-journey-scene" key={image}>
-          <img src={`/hero/${image}.jpg`} alt="" width="1672" height="941" fetchPriority={index === 0 ? "high" : "auto"} decoding="async" />
+        {["main-illustrated", "main-connected", "main-federated"].map((image, index) => <div className="cinematic-journey-scene" key={image}>
+          <img src={`/hero/${image}.${image === "main-illustrated" ? "png" : "jpg"}`} alt="" width="1672" height="941" fetchPriority={index === 0 ? "high" : "auto"} decoding="async" />
         </div>)}
       </div>
       <div className="cinematic-glow" />
