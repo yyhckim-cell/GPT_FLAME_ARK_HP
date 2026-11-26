@@ -3,12 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 
 export default function AnimatedHero() {
-  const imageRef = useRef<HTMLImageElement>(null);
+  const journeyRef = useRef<HTMLDivElement>(null);
   const [reducedMotion, setReducedMotion] = useState(true);
 
   useEffect(() => {
     const preference = matchMedia("(prefers-reduced-motion: reduce)");
-    const image = imageRef.current;
+    const journey = journeyRef.current;
     let frame = 0;
     let current = 0;
     let target = 0;
@@ -16,7 +16,10 @@ export default function AnimatedHero() {
       frame = 0;
       current += (target - current) * 0.1;
       if (Math.abs(target - current) < 0.00015) current = target;
-      if (image) image.style.transform = `scale(${1 + current * 0.48})`;
+      if (journey) {
+        const height = journey.parentElement?.clientHeight ?? innerHeight;
+        journey.style.transform = `translate3d(0,${-current * height * 2}px,0)`;
+      }
       if (current !== target) frame = requestAnimationFrame(paint);
     };
     const update = () => {
@@ -40,7 +43,11 @@ export default function AnimatedHero() {
 
   return <section className="cinematic-hero" aria-labelledby="hero-title" data-paused={reducedMotion}>
     <div className="cinematic-scene" aria-hidden="true">
-      <img ref={imageRef} className="cinematic-poster" src="/hero/main-federated.jpg" alt="" width="1672" height="941" fetchPriority="high" />
+      <div ref={journeyRef} className="cinematic-journey">
+        {["main-federated", "main-connected", "main-clinical"].map((image, index) => <div className="cinematic-journey-scene" key={image}>
+          <img src={`/hero/${image}.jpg`} alt="" width="1672" height="941" fetchPriority={index === 0 ? "high" : "auto"} decoding="async" />
+        </div>)}
+      </div>
       <div className="cinematic-glow" />
       <div className="cinematic-wash" />
     </div>
