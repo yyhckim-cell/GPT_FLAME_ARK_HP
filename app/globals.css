@@ -1035,3 +1035,33 @@ a:focus-visible,summary:focus-visible { outline:2px solid var(--teal); outline-o
 
 .footer>.container {padding-right:64px;}
 @media(max-width:600px) {.footer>.container {padding-right:54px;}.footer .brand-project-name {white-space:normal;}}
+
+/* Selected visual-story profile, with a quieter institutional introduction. */
+.partner-dialog {border-radius:13px;}
+.partner-dialog-header {background:radial-gradient(ellipse at 95% 0%,#236f7a,#0b263c 80%);border-bottom:0;padding-block:26px;}
+.partner-dialog-header::before {content:"";position:absolute;right:-65px;top:-100px;width:280px;height:280px;border:1px solid #70e3e52b;border-radius:50%;box-shadow:0 0 0 30px #70e3e506;pointer-events:none;}
+.partner-dialog-identity h2 {color:#f0fbfc;font-size:26px;}
+.partner-dialog-eyebrow {color:#8be5dd;}
+.partner-dialog-identity>p {color:#afcbd4;}
+.partner-dialog-identity .partner-story-headline {font-size:21px;line-height:1.5;color:#ddf6f1;font-weight:600;margin-top:14px;}
+.partner-dialog-logo {padding:9px 12px;border-radius:8px;max-height:70px;max-width:210px;position:relative;}
+.partner-dialog-columns {display:flex;flex-direction:column;gap:24px;}
+.partner-dialog-tech {order:0;}
+.partner-dialog-about {order:1;border-top:1px solid #d6e4e9;padding-top:18px;}
+.partner-dialog-about>h3 {display:none;}
+.partner-dialog-about>p {font-size:14px;line-height:1.75;color:#647d89;}
+.partner-dialog-keywords {margin-bottom:24px;}
+.partner-dialog-tech>h3 {font-size:14px;color:#187a8b;letter-spacing:.03em;margin-bottom:20px;border:0;padding:0;}
+.partner-tech-item {grid-template-columns:1fr;gap:0;}
+.partner-tech-number {display:none;}
+.partner-tech-item>div {display:flex;flex-direction:column;}
+.partner-tech-item h4 {order:0;font-size:20px;font-weight:700;}
+.partner-tech-item p {order:2;font-size:16px;line-height:1.8;}
+.partner-tech-flow {order:1;display:flex;gap:10px;margin:0 0 18px;}
+.partner-tech-flow>span {flex:1;padding:15px 12px;background:#edf6f6;color:#29576a;border:0;border-radius:8px;font-size:14px;}
+.haheho-modal-content .fh-header {background:radial-gradient(ellipse at 95% 0%,#236f7a,#0b263c 80%);}
+.haheho-modal-content .fh-name-row h1 {color:#f0fbfc;}
+.haheho-modal-content .fh-name-row>span {color:#bed8e0;}
+.haheho-modal-content .fh-eyebrow {color:#8be5dd;}
+.haheho-modal-content .fh-logo {border-radius:8px;}
+@media(max-width:600px) {.partner-dialog-identity h2 {font-size:23px;}.partner-dialog-identity .partner-story-headline {font-size:18px;}.partner-dialog-logo {max-width:110px;}.partner-tech-flow {flex-wrap:wrap;}.partner-tech-flow>span {flex-basis:100%;}.partner-tech-item h4 {font-size:18px;}}

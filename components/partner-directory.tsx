@@ -78,6 +78,7 @@ export default function PartnerDirectory({ partners }: { partners: Partner[] }) 
             <span className="partner-dialog-eyebrow">PARTNER PROFILE</span>
             <h2 id="partner-dialog-title">{active.profile.title}</h2>
             {active.profile.subtitle && <p>{active.profile.subtitle}</p>}
+            {active.profile.developments?.[0] && <p className="partner-story-headline">{active.profile.developments[0].title}</p>}
           </div>
           <img className="partner-dialog-logo" src={active.logo} alt={`${active.profile.title} 로고`} />
           <button autoFocus type="button" className="partner-dialog-close" onClick={closeDialog} aria-label="기관 소개 닫기"><X size={21} /></button>
