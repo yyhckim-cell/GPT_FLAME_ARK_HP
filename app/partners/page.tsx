@@ -16,7 +16,7 @@ export default function PartnersPage() {
       </div></div>
     </section>
     <section className="detail-section partners-directory-section"><div className="container">
-      <div className="partners-directory-heading"><h2>참여기관</h2><span>총 {sortedPartners.length}개 기관</span></div>
+      <div className="partners-directory-heading"><h2>참여기관</h2><span>총 {sortedPartners.length}개 기관 · 가나다순 표기</span></div>
       <PartnerDirectory partners={sortedPartners} />
     </div></section>
     <SiteFooter />
