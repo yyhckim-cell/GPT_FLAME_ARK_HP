@@ -894,3 +894,23 @@ a:focus-visible,summary:focus-visible { outline:2px solid var(--teal); outline-o
 .news-tabs button:focus-visible { outline:3px solid #148f98; outline-offset:-4px; }
 .news-empty-panel { padding:54px 20px; text-align:center; color:#4b6775; }
 .news-empty-panel p { margin:0; font-size:16px; }
+
+/* Compact project footer and official related destinations. */
+.footer { padding:30px 0 18px; }
+.footer-content { gap:32px; padding-bottom:20px; }
+.footer-identity p { margin-top:10px; line-height:1.65; }
+.footer-project-period>span { margin-bottom:5px; }
+.footer-project-period strong { font-size:20px; }
+.footer-project-period p { margin-top:6px; }
+.footer-utilities { padding-block:12px; }
+.footer-related-links { display:flex; align-items:center; flex-wrap:wrap; gap:8px 22px; margin-top:14px; font-size:14px; }
+.footer-related-links>span { color:#a2c6cc; }
+.footer-related-links>a { color:#d5e8ed; }
+.footer-related-links>a:hover { color:#a7f1d8; text-decoration:underline; text-underline-offset:4px; }
+.footer-copyright { margin-top:12px; }
+@media(max-width:760px) {
+ .footer {padding:24px 0 18px;}
+ .footer-content {gap:18px;padding-bottom:18px;}
+ .footer-utilities {flex-wrap:wrap;gap:12px;}
+ .footer-utility-links {gap:8px 18px;}
+}
