@@ -133,3 +133,10 @@ body { background:#e7eff0; }
 .resource-card .card-footer{font-size:14px;}
 .side-help p{font-size:14px;line-height:1.7;}
 @media(max-width:800px){.workspace-toolbar{flex-wrap:wrap;gap:10px;}.workspace-toolbar .header-account{padding-left:12px;margin-left:auto;}.dashboard-hero{padding:26px;}.dashboard-hero h1{font-size:30px;}.hero-mark{width:95px;height:95px;}.filter-button{font-size:15px;}.resource-grid{grid-template-columns:1fr;}}
+
+/* Resource cards: text first, with a clear interactive state. */
+.resource-card{transition:background-color .18s,border-color .18s,box-shadow .18s;}
+.resource-card:hover,.resource-card:focus-visible{background:#e6f5f4;border-color:#168e94;box-shadow:0 6px 20px rgba(14,83,91,.1);transform:none;}
+.resource-card:hover strong,.resource-card:focus-visible strong{color:#007882;}
+.resource-card:focus-visible{outline:2px solid #168e94;outline-offset:3px;}
+@media(prefers-reduced-motion:reduce){.resource-card{transition:none;}}

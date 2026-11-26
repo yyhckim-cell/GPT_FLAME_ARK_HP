@@ -125,9 +125,8 @@ function renderGroups(){
     const grid=el('div','resource-grid');
     for(const item of items){
       const b=el('button','resource-card'+(item.url?'':' pending'));b.type='button';
-      const glyph=group==='공통'?'◈':group==='주관 채널'?'▣':group==='협의체 채널'?'◎':'▤';
-      append(b,el('span','card-icon',glyph),el('strong','',item.title),el('span','card-desc',item.description));
-      const foot=el('span','card-footer');append(foot,el('span','',item.url?'노션에서 열기':'자료 준비 중'),el('span','arrow',item.url?'↗':'○'));b.appendChild(foot);
+      append(b,el('strong','',item.title),el('span','card-desc',item.description));
+      const foot=el('span','card-footer');append(foot,el('span','',item.url?'노션에서 열기':'자료 준비 중'));b.appendChild(foot);
       b.addEventListener('click',()=>{if(!item.url){showDialog('소개자료 준비 중','해당 항목은 아직 연결된 자료가 없습니다. 자료 등록 후 이용할 수 있습니다.');} else {window.open(item.url,'_blank','noopener,noreferrer');}});
       grid.appendChild(b);
     }
