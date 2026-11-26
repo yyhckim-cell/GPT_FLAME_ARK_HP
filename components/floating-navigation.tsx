@@ -5,14 +5,6 @@ import { siteNavigation } from "./site-navigation";
 
 export default function FloatingNavigation() {
   const [open, setOpen] = useState(false);
-  const [footerVisible, setFooterVisible] = useState(false);
-  useEffect(() => {
-    const footer = document.getElementById("contact");
-    if (!footer) return;
-    const observer = new IntersectionObserver(([entry]) => { setFooterVisible(entry.isIntersecting); if (entry.isIntersecting) setOpen(false); }, { threshold: 0.3 });
-    observer.observe(footer);
-    return () => observer.disconnect();
-  }, []);
   const root = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!open) return;
@@ -22,7 +14,7 @@ export default function FloatingNavigation() {
     document.addEventListener("keydown", escape);
     return () => { document.removeEventListener("pointerdown", dismiss); document.removeEventListener("keydown", escape); };
   }, [open]);
-  return <div hidden={footerVisible} className="floating-navigation" ref={root}>
+  return <div className="floating-navigation" ref={root}>
     {open && <nav id="floating-site-menu" className="floating-menu-panel" aria-label="빠른 전체 메뉴">
       <a href="/" onClick={() => setOpen(false)}>메인 화면</a>
       {siteNavigation.map(item => <a key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}</a>)}

@@ -1032,3 +1032,6 @@ a:focus-visible,summary:focus-visible { outline:2px solid var(--teal); outline-o
 .partners-directory-heading h2 {font-size:28px;}
 .partners-directory-heading>span {font-size:14px;color:#426777;}
 .partners-page .partner-grid {margin-top:0;}
+
+.footer>.container {padding-right:64px;}
+@media(max-width:600px) {.footer>.container {padding-right:54px;}.footer .brand-project-name {white-space:normal;}}
