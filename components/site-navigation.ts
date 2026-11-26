@@ -7,6 +7,6 @@ export const siteNavigation = [
   { label: "실증·검증", href: "/validation" },
   { label: "추진일정", href: "/roadmap" },
   { label: "추진체계", href: "/consortium" },
-  { label: "참여기관", href: "/#partners" },
+  { label: "참여기관", href: "/partners" },
   { label: "성과·소식", href: "/#news" },
 ];

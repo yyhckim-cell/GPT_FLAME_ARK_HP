@@ -11,7 +11,7 @@ export default function HahaehoPage() {
   return <main id="top" className="detail-page">
     <SiteHeader />
     <div className="container partner-profile-page">
-      <a className="partner-profile-back" href="/#partners"><ArrowLeft size={16} /> 참여기관 목록</a>
+      <a className="partner-profile-back" href="/partners"><ArrowLeft size={16} /> 참여기관 목록</a>
       <HahehoProfile />
     </div>
     <SiteFooter />

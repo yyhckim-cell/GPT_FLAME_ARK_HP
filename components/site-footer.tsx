@@ -12,7 +12,7 @@ export default function SiteFooter() {
       <div className="footer-utilities">
         <div className="footer-utility-links">
           <a href="https://www.samsunghospital.com/" target="_blank" rel="noopener noreferrer">총괄기관: 삼성서울병원<span className="sr-only"> (새 창)</span></a>
-          <a href="/#partners">참여기관 보기</a>
+          <a href="/partners">참여기관 보기</a>
           <a href="/research">연구자 전용</a>
           <BrandIdentityDialog><BrandIdentityContent /></BrandIdentityDialog>
         </div>
@@ -20,6 +20,7 @@ export default function SiteFooter() {
         <span>유관사이트</span>
         <a href="https://www.mohw.go.kr/" target="_blank" rel="noopener noreferrer">보건복지부<span className="sr-only"> (새 창)</span></a>
         <a href="https://www.khidi.or.kr/kps" target="_blank" rel="noopener noreferrer">한국보건산업진흥원<span className="sr-only"> (새 창)</span></a>
+        <a href="https://www.htdream.kr/" target="_blank" rel="noopener noreferrer">HTdream<span className="sr-only"> (새 창)</span></a>
       </nav>
       </div>
 

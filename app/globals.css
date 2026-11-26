@@ -1026,3 +1026,9 @@ a:focus-visible,summary:focus-visible { outline:2px solid var(--teal); outline-o
  .detail-hero>.research-domain-visual img {object-position:65% center;opacity:.24;}
  .detail-hero>.research-domain-visual::after {background:linear-gradient(90deg,#0b253ae8,#103645a8);}
 }
+
+.partners-directory-section {padding:48px 0 60px;background:#f4f8f9;}
+.partners-directory-heading {display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:26px;}
+.partners-directory-heading h2 {font-size:28px;}
+.partners-directory-heading>span {font-size:14px;color:#426777;}
+.partners-page .partner-grid {margin-top:0;}
