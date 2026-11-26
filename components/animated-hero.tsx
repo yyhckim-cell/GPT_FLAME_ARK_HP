@@ -1,11 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Pause, Play } from "lucide-react";
 
 export default function AnimatedHero() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [paused, setPaused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(true);
   const [videoFailed, setVideoFailed] = useState(false);
 
@@ -20,7 +18,7 @@ export default function AnimatedHero() {
   useEffect(() => {
     const video = videoRef.current;
     if (!video || videoFailed) return;
-    if (paused || reducedMotion) {
+    if (reducedMotion) {
       video.pause();
       return;
     }
@@ -41,9 +39,9 @@ export default function AnimatedHero() {
       observer.disconnect();
       document.removeEventListener("visibilitychange", onVisibilityChange);
     };
-  }, [paused, reducedMotion, videoFailed]);
+  }, [reducedMotion, videoFailed]);
 
-  return <section className="cinematic-hero" aria-labelledby="hero-title" data-paused={paused || reducedMotion}>
+  return <section className="cinematic-hero" aria-labelledby="hero-title" data-paused={reducedMotion}>
     <div className="cinematic-scene" aria-hidden="true">
       <img className="cinematic-poster" src="/hero/research-campus.jpg" alt="" width="1920" height="1080" fetchPriority="high" />
       {!reducedMotion && !videoFailed && <video ref={videoRef} className="cinematic-video"
@@ -69,11 +67,7 @@ export default function AnimatedHero() {
       <p>FEDERATED LEARNING <span>·</span> CONNECTED MEDICAL INTELLIGENCE</p>
       <div className="cinematic-footer-actions">
         <a href="#home-explore-title">FLAME-ARK 주요 내용</a>
-        {!reducedMotion && !videoFailed && <button type="button" onClick={() => setPaused(!paused)}
-          className="cinematic-control" aria-pressed={paused}
-          aria-label={paused ? "배경 움직임 재생" : "배경 움직임 정지"}>
-          {paused ? <Play size={16} /> : <Pause size={16} />}
-        </button>}
+
       </div>
     </div>
   </section>;

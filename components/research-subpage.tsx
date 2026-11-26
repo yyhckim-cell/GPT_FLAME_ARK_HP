@@ -1,3 +1,4 @@
+import ResearchNetworkVisual from "./research-network-visual";
 import SiteHeader from "./site-header";
 import SiteFooter from "./site-footer";
 import Link from "next/link";
@@ -247,30 +248,36 @@ export type ResearchPageKey = keyof typeof researchPages;
 
 export default function ResearchSubpage({ page }: { page: ResearchPageKey }) {
   const content = researchPages[page];
-  const hideIntro = page === "project";
+  const isProject = page === "project";
   const currentIndex = researchPageLinks.findIndex((item) => item.slug === page);
   const next = researchPageLinks[(currentIndex + 1) % researchPageLinks.length];
 
-  return <main id="top" className="detail-page">
+  return <main id="top" className={`detail-page${isProject ? " project-overview-page" : ""}`}>
     <SiteHeader currentPath={"/" + page} />
 
-    <section className={hideIntro ? "detail-hero detail-hero-compact" : "detail-hero"}>
+    <section className="detail-hero">
       <div className="container detail-hero-layout">
         <div>
           <p className="detail-eyebrow">{content.english}</p>
-          {hideIntro ? <h1 className="sr-only">사업 소개</h1> : <h1>{content.heading}</h1>}
-          {!hideIntro && <p className="detail-hero-lead">{content.lead}</p>}
+          <h1>{content.heading}</h1>
+          <p className="detail-hero-lead">{content.lead}</p>
+          {isProject && <div className="project-hero-facts"><span>연구기간 <strong>2025.04 ~ 2029.12</strong></span><span>협력체계 <strong>5개 주관 연구영역</strong></span></div>}
         </div>
-        <aside className="detail-hero-aside" aria-label="연구과제 안내">
-          <div className="detail-aside-icon"><Network size={33} strokeWidth={1.3}/></div>
-          <span>FLAME-ARK PROJECT</span>
-          <strong>{content.highlight}</strong>
-          <p>{content.summary}</p>
-        </aside>
+        <ResearchNetworkVisual label={content.label} />
       </div>
     </section>
 
 
+
+    {isProject && <section className="project-research-flow" aria-label="사업의 연구개발 흐름"><div className="container">
+      <div className="project-flow-intro"><span>OUR APPROACH</span><h2>데이터의 이해부터<br/>의료현장의 활용까지</h2><p>멀티모달 AI와 연합학습을 중심으로 연구와 실증을 연결합니다.</p></div>
+      <ol>
+        <li><span>DATA</span><h3>다양한 의료정보</h3><p>텍스트·표·영상·음성·이미지의 표준화와 품질 관리</p></li>
+        <li><span>MODEL</span><h3>통합적인 의료 이해</h3><p>의료 범용 멀티모달 파운데이션 모델 개발</p></li>
+        <li><span>FEDERATED LEARNING</span><h3>의료기관의 협력</h3><p>병원별 환경을 고려한 공동 학습과 플랫폼 구축</p></li>
+        <li><span>APPLICATION</span><h3>현장 중심의 검증</h3><p>의료진과 환자를 지원하는 AI 솔루션 개발·실증</p></li>
+      </ol>
+    </div></section>}
 
     {content.sections.map((section, sectionIndex) => <section className="detail-section" key={section.eyebrow}>
       <div className="container">

@@ -1,9 +1,18 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { Menu, X, ChevronUp } from "lucide-react";
 import { siteNavigation } from "./site-navigation";
 
 export default function FloatingNavigation() {
   const [open, setOpen] = useState(false);
+  const [footerVisible, setFooterVisible] = useState(false);
+  useEffect(() => {
+    const footer = document.getElementById("contact");
+    if (!footer) return;
+    const observer = new IntersectionObserver(([entry]) => { setFooterVisible(entry.isIntersecting); if (entry.isIntersecting) setOpen(false); }, { threshold: 0.3 });
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
   const root = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!open) return;
@@ -13,15 +22,15 @@ export default function FloatingNavigation() {
     document.addEventListener("keydown", escape);
     return () => { document.removeEventListener("pointerdown", dismiss); document.removeEventListener("keydown", escape); };
   }, [open]);
-  return <div className="floating-navigation" ref={root}>
+  return <div hidden={footerVisible} className="floating-navigation" ref={root}>
     {open && <nav id="floating-site-menu" className="floating-menu-panel" aria-label="빠른 전체 메뉴">
       <a href="/" onClick={() => setOpen(false)}>메인 화면</a>
       {siteNavigation.map(item => <a key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}</a>)}
       <a href="/research" onClick={() => setOpen(false)}>연구자 전용</a>
     </nav>}
     <div className="floating-navigation-actions">
-      <button type="button" aria-expanded={open} aria-controls="floating-site-menu" onClick={() => setOpen(!open)}>{open ? "메뉴 닫기" : "전체 메뉴"}</button>
-      <a href="#top" onClick={() => setOpen(false)}>맨 위로</a>
+      <button type="button" aria-label={open ? "전체 메뉴 닫기" : "전체 메뉴 열기"} aria-expanded={open} aria-controls="floating-site-menu" onClick={() => setOpen(!open)}>{open ? <X size={20}/> : <Menu size={20}/>}</button>
+      <a href="#top" aria-label="맨 위로" onClick={() => setOpen(false)}><ChevronUp size={22}/></a>
     </div>
   </div>;
 }
