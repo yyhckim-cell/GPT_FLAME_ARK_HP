@@ -1,31 +1,6 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-
 export default function AnimatedHero() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
-
-  useEffect(() => {
-    const preference = matchMedia("(prefers-reduced-motion: reduce)");
-    const sync = () => {
-      if (preference.matches) videoRef.current?.pause();
-      else videoRef.current?.play().catch(() => {});
-    };
-    sync();
-    preference.addEventListener("change", sync);
-    return () => preference.removeEventListener("change", sync);
-  }, []);
-
-  const togglePlayback = () => {
-    const video = videoRef.current;
-    if (!video) return;
-    if (video.paused) video.play().catch(() => {});
-    else video.pause();
-  };
-
-  return <section className="cinematic-hero cinematic-hero-video" aria-labelledby="hero-title">
-    <div className="container cinematic-video-layout">
+  return <section className="cinematic-hero cinematic-hero-stills" aria-labelledby="hero-title">
+    <div className="container cinematic-stills-layout">
     <div className="cinematic-content">
       <p className="cinematic-eyebrow">FLAME-ARK · MEDICAL AI RESEARCH</p>
       <h1 id="hero-title">병원을 연결하고,<br /><span>의료AI를 발전시키다.</span></h1>
@@ -37,16 +12,15 @@ export default function AnimatedHero() {
         <a className="cinematic-secondary" href="/technology">핵심 연구기술</a>
       </div>
     </div>
-    <div className="cinematic-motion-panel">
-      <video ref={videoRef} className="cinematic-motion-video" muted loop playsInline preload="metadata"
-        poster="/hero/corridor-journey-poster.png" aria-label="의료AI 연구공간을 따라 이동하는 영상"
-        onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)}>
-        <source src="/hero/corridor-journey.mp4" type="video/mp4" />
-      </video>
-      <button className="cinematic-playback" type="button" onClick={togglePlayback}
-        aria-label={playing ? "배경 영상 일시정지" : "배경 영상 재생"} title={playing ? "일시정지" : "재생"}>
-        {playing ? <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6v12M16 6v12" /></svg> : <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 9 6-9 6Z" /></svg>}
-      </button>
+    <div className="cinematic-stills-sequence" aria-label="의료AI 연구공간 둘러보기">
+      {[
+        "의료데이터를 분석하는 연구진과 연구공간",
+        "유리벽을 따라 이어지는 연구 복도",
+        "협업 연구실로 이어지는 복도 안쪽",
+        "의료AI 연구 사무실과 회의 공간",
+      ].map((description, index) => <img key={index} src={`/hero/corridor-scene-${index}.png`}
+        alt={description} width="1672" height="941" loading={index === 0 ? "eager" : "lazy"}
+        fetchPriority={index === 0 ? "high" : "auto"} decoding="async" />)}
     </div>
     </div>
     <div className="container cinematic-footer">

@@ -1112,3 +1112,16 @@ a:focus-visible,summary:focus-visible { outline:2px solid var(--teal); outline-o
 .cinematic-playback:focus-visible{outline:3px solid #fff;outline-offset:3px;}
 @media(max-width:1000px){.home-page .cinematic-hero-video{min-height:0;padding:140px 0 120px;}.cinematic-video-layout{grid-template-columns:1fr;gap:32px;}.home-page .cinematic-hero-video .cinematic-content h1{font-size:clamp(34px,5.6vw,56px);}.cinematic-motion-panel{width:100%;max-width:760px;}.cinematic-hero-video .cinematic-eyebrow{margin-bottom:20px;}}
 @media(max-width:600px){.home-page .cinematic-hero-video{padding:125px 0 145px;}.cinematic-motion-panel{border-radius:10px;}.cinematic-video-layout{gap:26px;}.cinematic-hero-video .cinematic-footer{bottom:24px;}}
+
+/* Four stills in document flow: native scroll only, no camera animation. */
+.home-page .cinematic-hero-stills{background:#f5faf9;min-height:0;padding:150px 0 32px;display:block;overflow:visible;}
+.cinematic-stills-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(28px,4vw,72px);align-items:start;}
+.home-page .cinematic-hero-stills .cinematic-content{position:sticky;top:130px;padding:28px 0;min-width:0;}
+.home-page .cinematic-hero-stills .cinematic-content h1{font-size:clamp(34px,3.25vw,62px);text-wrap:normal;line-height:1.26;}
+.cinematic-hero-stills .cinematic-description{font-size:clamp(16px,1.1vw,19px);}
+.cinematic-hero-stills .cinematic-desktop-break{display:none;}
+.cinematic-stills-sequence{display:flex;flex-direction:column;gap:0;overflow:hidden;border-radius:12px;background:#14374a;}
+.cinematic-stills-sequence img{display:block;width:100%;height:auto;aspect-ratio:1672/941;object-fit:contain;flex:none;}
+.cinematic-hero-stills .cinematic-footer{position:static;margin-top:32px;}
+@media(max-width:1000px){.home-page .cinematic-hero-stills{padding-top:135px;}.cinematic-stills-layout{grid-template-columns:1fr;gap:28px;}.home-page .cinematic-hero-stills .cinematic-content{position:static;padding:0;}.home-page .cinematic-hero-stills .cinematic-content h1{font-size:clamp(34px,5.6vw,56px);}.cinematic-hero-stills .cinematic-eyebrow{margin-bottom:20px;}}
+@media(max-width:600px){.home-page .cinematic-hero-stills{padding-top:125px;}.cinematic-stills-sequence{border-radius:8px;}.cinematic-hero-stills .cinematic-footer{margin-top:24px;}}
