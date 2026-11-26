@@ -267,11 +267,11 @@ export default function ResearchSubpage({ page }: { page: ResearchPageKey }) {
       <div className="container detail-hero-layout">
         <div>
           <p className="detail-eyebrow">{content.english}</p>
-          <h1>{page === "technology" ? <>데이터에서 모델까지,<br />모델에서 현장까지</> : content.heading}</h1>
+          <h1>{page === "technology" ? <>데이터에서 모델까지,<br />모델에서 현장까지</> : page === "solutions" ? <>의료업무의 흐름에 맞춘<br />AI 서비스</> : content.heading}</h1>
           <p className="detail-hero-lead">{content.lead}</p>
           {isProject && <div className="project-hero-facts"><span>연구기간 <strong>2025.04 ~ 2029.12</strong></span><span>협력체계 <strong>5개 주관 연구영역</strong></span></div>}
         </div>
-        <ResearchNetworkVisual label={content.label} />
+        <ResearchNetworkVisual page={page} />
       </div>
     </section>
 
