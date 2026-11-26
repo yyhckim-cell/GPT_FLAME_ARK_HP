@@ -75,7 +75,7 @@ function MediGuideTab() {
       <MiniCard title="의료진 · 웹 대시보드"><ul><li>환자 학습 진행 상태 확인</li><li>질문·우려 사항 확인</li><li>이해도와 추가 설명 항목 확인</li><li>대면 보완 설명, 최종 동의·서명</li></ul></MiniCard>
     </div>
     <div className="fh-soft-note"><strong>EMR 연계 계획</strong><p>환자 식별정보, 수술·검사 종류, 일정 등 최소 정보로 해당 동의서 교육 콘텐츠를 연결합니다.</p></div>
-    <div className="fh-subheading">연구 성능 목표 <span>달성 결과가 아닌 계획서상 목표치</span></div>
+    <div className="fh-subheading">연구 성능 목표 <span>연구 목표치</span></div>
     <div className="fh-metric-grid fh-target-grid"><Target value="95% 이상" label="답변 정확도 (전문가 검수)"/><Target value="2% 미만" label="할루시네이션 발생률"/><Target value="5초 이내" label="질문 후 답변 시간"/><Target value="30% 이상" label="수술 설명 시간 단축 목표"/></div>
   </div>;
 }
@@ -91,7 +91,7 @@ function VocTab() {
       <Pillar number={4} title="출력·대응">부서 전달, 긴급 알림, CS팀 검토 후 AI 응답 초안 발송, VoC 대시보드, PPT·Word 보고서</Pillar>
     </div>
     <div className="fh-soft-note"><strong>운영 및 보안 설계</strong><p>외부 SNS 크롤링 제외. 온프레미스 폐쇄망, RBAC 권한 제어, 로그·백업, CS·EMR·설문·포털 내부 API 연계를 고려합니다. 처리 결과를 서비스 개선과 후속 분석에 반영합니다.</p></div>
-    <div className="fh-subheading">도입 후 6~12개월 성능 목표 <span>달성 결과가 아닌 계획서상 목표치</span></div>
+    <div className="fh-subheading">도입 후 6~12개월 성능 목표 <span>연구 목표치</span></div>
     <div className="fh-metric-grid fh-target-grid"><Target value="15~25%" label="최초 응답 시간 단축 목표"/><Target value="78~85%" label="자동 분류 Macro-F1 목표"/><Target value="30~50%" label="AI 응답 초안 승인률 목표"/><Target value="20~30%" label="수작업 입력·분류 시간 절감 목표"/></div>
   </div>;
 }

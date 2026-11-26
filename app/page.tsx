@@ -1,3 +1,4 @@
+import NewsTabs from "@/components/news-tabs";
 import SectionAnchor from "@/components/section-anchor";
 import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
@@ -186,19 +187,18 @@ export default function Home() {
     </div></section>
 
     <section className="section upcoming" id="solutions"><div className="container">
-      <div className="upcoming-heading"><Heading eyebrow="AI SOLUTIONS" title="연구성과를 의료현장의 가치로" detail="진료기록, 다학제 협진, 회송·전원, 환자 건강관리 등 연구계획서에 제시된 AI 솔루션을 소개합니다."/><span className="status-badge"><span/>RESEARCH PLAN</span></div>
+      <div className="upcoming-heading"><Heading eyebrow="AI SOLUTIONS" title="연구성과를 의료현장의 가치로" detail="진료기록, 다학제 협진, 회송·전원, 환자 건강관리를 지원하는 AI 솔루션을 소개합니다."/></div>
       <div className="upcoming-card"><div className="upcoming-icon"><BrainCircuit size={45} strokeWidth={1.2}/></div><div><span className="small-uppercase">SOLUTION RESEARCH</span><h3>의료현장별 AI 솔루션 개발과 실증</h3><p>5개 주관 연구영역에서 추진하는 솔루션의 개발 목적과 주요 기능, 적용 시나리오를 확인해 보세요. 아래 내용은 연구 목표로, 서비스 상용화 완료를 의미하지 않습니다.</p><a href="/solutions" className="home-inline-link">AI 솔루션 전체 보기 <ArrowUpRight size={16}/></a></div><span className="upcoming-number">02 / 05</span></div>
     </div></section>
 
     <section className="section partners" id="partners"><div className="container">
       <div className="partners-title"><Heading eyebrow="PARTNERS & CONSORTIUM" title="함께 만드는 의료AI의 미래" detail="의료AI 연구개발에 함께하는 참여기관을 소개합니다. 기관 로고와 명칭을 가나다순으로 확인할 수 있습니다."/><span>참여기관 {sortedPartners.length}개</span></div>
       <PartnerDirectory partners={sortedPartners} />
-      <p className="partner-note">기관명과 로고는 제공받은 자료를 기준으로 등록했으며, 기관별 참여 역할은 확인 후 추가될 예정입니다.</p>
     </div></section>
 
     <section className="section news" id="news"><div className="container">
-      <div className="news-heading"><Heading eyebrow="NEWS & INSIGHTS" title="FLAME-ARK 소식" detail="연구개발 현황, 주요 성과, 행사 및 공지사항을 공유합니다."/><span className="news-preview-pill">운영형 게시판 개발 예정</span></div>
-      <div className="empty-news"><span>NOTICE / PUBLICATIONS / EVENTS</span><p>게시된 소식이 없습니다.</p><small>공개 가능한 자료 확인 후 순차적으로 업데이트됩니다.</small><ArrowUpRight size={24}/></div>
+      <div className="news-heading"><Heading eyebrow="NEWS & INSIGHTS" title="FLAME-ARK 소식" detail="연구개발 현황, 주요 성과, 행사 및 공지사항을 공유합니다."/></div>
+      <NewsTabs />
     </div></section>
 
     <SiteFooter />

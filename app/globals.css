@@ -877,3 +877,20 @@ a:focus-visible,summary:focus-visible { outline:2px solid var(--teal); outline-o
 .haheho-modal-content .fh-tabs { flex:none; }
 .haheho-modal-content .fh-page .fh-content { min-height:0; overflow-y:auto; overscroll-behavior:contain; }
 .haheho-modal-content .partner-dialog-close { z-index:3; }
+
+.floating-navigation { position:fixed; right:24px; bottom:24px; z-index:40; }
+.floating-navigation-actions { display:flex; gap:6px; justify-content:flex-end; }
+.floating-navigation-actions button,.floating-navigation-actions>a { display:flex; align-items:center; justify-content:center; min-height:44px; padding:10px 15px; border:1px solid #456e7e; border-radius:10px; background:#0b2b40; color:#effcfc; font-family:inherit; font-size:14px; font-weight:600; line-height:1.4; cursor:pointer; box-shadow:0 4px 18px #071e3030; }
+.floating-menu-panel { display:grid; width:min(290px,calc(100vw - 32px)); max-height:calc(100dvh - 110px); overflow-y:auto; margin-bottom:10px; padding:10px 18px; border:1px solid #4b798b; border-radius:14px; background:#0b2b40; box-shadow:0 12px 40px #061e4055; }
+.floating-menu-panel a { display:flex; align-items:center; min-height:44px; color:#effcfc; font-size:15px; border-bottom:1px solid #335367; }
+.floating-menu-panel a:last-child { border:0; }
+.floating-menu-panel a:hover { color:#8ef0de; }
+@media(max-width:600px) { .floating-navigation {right:14px;bottom:14px;} }
+
+.news-boards { border:1px solid #b7d1d9; border-radius:16px; overflow:hidden; background:#ffffffed; }
+.news-tabs { display:flex; border-bottom:1px solid #c9dfe4; background:#edf5f6; }
+.news-tabs button { flex:1; min-height:58px; border:0; border-bottom:3px solid transparent; background:transparent; color:#496874; font:inherit; font-size:16px; font-weight:650; cursor:pointer; }
+.news-tabs button[aria-selected="true"] { color:#086f7d; background:#fff; border-bottom-color:#148f98; }
+.news-tabs button:focus-visible { outline:3px solid #148f98; outline-offset:-4px; }
+.news-empty-panel { padding:54px 20px; text-align:center; color:#4b6775; }
+.news-empty-panel p { margin:0; font-size:16px; }

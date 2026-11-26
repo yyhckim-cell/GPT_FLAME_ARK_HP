@@ -68,7 +68,7 @@ export const researchPages: Record<string, PageContent> = {
     sections: [
       {
         eyebrow: "01 / MULTIMODAL DATA", title: "의료 멀티모달 데이터 표준화",
-        description: "연구계획서에 제시된 데이터 준비, 획득, 정제, 라벨링, 검사 절차를 바탕으로 품질 관리 체계를 구축합니다.",
+        description: "데이터 준비, 획득, 정제, 라벨링, 검사 절차를 연결하는 품질 관리 체계를 구축합니다.",
         entries: [
           { title: "정형 및 서술형 정보", description: "진단·처방·검사 결과 등 구조화된 정보와 진료기록, 경과기록, 의뢰내용 등 서술형 의료문서를 대상으로 합니다." },
           { title: "의료영상과 이미지", description: "의료영상, 영상 판독 정보, 이미지 및 문서의 OCR 정보 등 시각적 의료자료의 특성을 고려합니다." },
@@ -100,7 +100,7 @@ export const researchPages: Record<string, PageContent> = {
   solutions: {
     label: "AI 솔루션", english: "AI SOLUTION RESEARCH",
     heading: "의료업무의 흐름에 맞춘 AI 서비스",
-    lead: "연구계획서의 2~5주관 개발 목표를 중심으로, 의료진과 환자를 지원하는 AI 솔루션의 활용 시나리오를 소개합니다.",
+    lead: "의료진과 환자를 지원하는 AI 솔루션의 개발 목표와 활용 시나리오를 소개합니다.",
     summary: "아래 서비스는 연구개발 목표와 실증 계획입니다. 상용 서비스 제공 여부나 의료기기 인증 완료를 의미하지 않습니다.",
     highlight: "CLINICAL WORKFLOW  /  PATIENT EXPERIENCE",
     sections: [
@@ -208,7 +208,7 @@ export const researchPages: Record<string, PageContent> = {
     label: "연구 추진체계", english: "RESEARCH CONSORTIUM",
     heading: "다섯 연구영역이 하나의 과제를 완성합니다",
     lead: "공통 기반기술과 의료서비스 개발, 임상 실증을 연결하기 위해 주관 연구영역별 역할을 구분하고 참여기관 간 협력을 추진합니다.",
-    summary: "아래 구조는 연구계획서의 1~5주관 연구내용을 공개용으로 요약한 것입니다. 기관별 세부 책임과 운영 조직은 별도 확인 후 확정합니다.",
+    summary: "5개 주관 연구영역이 기반기술 개발, 의료서비스 구현, 임상 실증을 연결하며 협력합니다.",
     highlight: "5 RESEARCH GROUPS  /  SHARED FOUNDATION",
     sections: [
       {
@@ -257,11 +257,9 @@ export default function ResearchSubpage({ page }: { page: ResearchPageKey }) {
     <section className={hideIntro ? "detail-hero detail-hero-compact" : "detail-hero"}>
       <div className="container detail-hero-layout">
         <div>
-          <Link className="detail-back" href="/"><ArrowLeft size={16}/> 메인으로 돌아가기</Link>
           <p className="detail-eyebrow">{content.english}</p>
           {hideIntro ? <h1 className="sr-only">사업 소개</h1> : <h1>{content.heading}</h1>}
           {!hideIntro && <p className="detail-hero-lead">{content.lead}</p>}
-          <p className="detail-hero-source">연구계획서 기반 정보 제공 페이지</p>
         </div>
         <aside className="detail-hero-aside" aria-label="연구과제 안내">
           <div className="detail-aside-icon"><Network size={33} strokeWidth={1.3}/></div>
@@ -301,7 +299,6 @@ export default function ResearchSubpage({ page }: { page: ResearchPageKey }) {
         <div>
           <p>CONTINUE EXPLORING</p>
           <h2>다음 연구 내용도 살펴보세요.</h2>
-          <span>연구계획서의 내용을 쉽게 찾아볼 수 있도록 상세 페이지를 구성했습니다.</span>
         </div>
         <Link href={"/" + next.slug}>{next.title}<ArrowRight size={19}/></Link>
       </div>

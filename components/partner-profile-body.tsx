@@ -52,7 +52,6 @@ export default function PartnerProfileBody({ profile }: { profile: PartnerProfil
           )}
         </div>
       )}
-      <p className="partner-dialog-source">제공받은 FLAME-ARK 기관소개 자료를 바탕으로 정리했습니다.</p>
     </div>
   );
 }

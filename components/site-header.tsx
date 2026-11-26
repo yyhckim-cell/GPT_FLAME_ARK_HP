@@ -1,8 +1,9 @@
+import FloatingNavigation from "./floating-navigation";
 import BrandLockup from "./brand-lockup";
 import { siteNavigation } from "./site-navigation";
 
 export default function SiteHeader({ currentPath = "/", home = false }: { currentPath?: string; home?: boolean }) {
-  return <header className="site-header">
+  return <><header className="site-header">
     <div className="container header-inner">
       <BrandLockup href={home ? "#top" : "/"}
         biSrc={home ? "/brand/flame-ark-home-header-bi.png" : undefined} />
@@ -21,5 +22,5 @@ export default function SiteHeader({ currentPath = "/", home = false }: { curren
         </nav>
       </details>
     </div>
-  </header>;
+  </header><FloatingNavigation /></>;
 }
