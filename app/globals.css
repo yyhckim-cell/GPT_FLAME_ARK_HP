@@ -977,3 +977,30 @@ a:focus-visible,summary:focus-visible { outline:2px solid var(--teal); outline-o
 
 .partner-dialog-identity h2 {font-size:30px;font-weight:800;line-height:1.35;letter-spacing:-.8px;color:#123a52;}
 @media(max-width:600px) {.partner-dialog-identity h2 {font-size:25px;}}
+
+/* Carry the homepage's cinematic hospital imagery into each research page. */
+.detail-hero {background:linear-gradient(115deg,#0a2438,#123e50);}
+.detail-hero::after {display:none;}
+.research-campus-visual {position:relative;margin:0;isolation:isolate;min-height:340px;align-self:stretch;overflow:hidden;display:flex;align-items:flex-end;}
+.research-campus-visual>img {position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:65% 60%;opacity:.8;mask-image:linear-gradient(90deg,transparent,#000 24%,#000 85%,transparent),linear-gradient(0deg,transparent,#000 20%,#000 85%,transparent);mask-composite:intersect;}
+.research-campus-visual::after {content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,#103648c7,transparent 65%),linear-gradient(90deg,#10334766,transparent 50%);pointer-events:none;}
+.research-campus-light {position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse at 65% 40%,#83f5e833,transparent 57%);animation:research-campus-breathe 12s ease-in-out infinite alternate;pointer-events:none;}
+@keyframes research-campus-breathe {from {opacity:.35;}to {opacity:.85;}}
+.research-campus-visual figcaption {position:relative;z-index:2;padding:28px 24px 18px;}
+.research-campus-visual figcaption>span {display:block;color:#a7e6e0;font-size:11px;letter-spacing:2.4px;font-weight:600;}
+.research-campus-visual figcaption strong {display:block;color:#e3f4f2;margin-top:9px;font-size:20px;font-weight:500;letter-spacing:-.5px;}
+.footer .brand {align-items:center;gap:14px;}
+.footer .brand-ci-wrap {display:flex;flex-direction:column;align-items:flex-start;gap:5px;height:auto;}
+.footer .brand-project-name {display:block;order:0;color:#bdcfd9;font-size:12px;line-height:1.5;font-weight:500;white-space:nowrap;letter-spacing:-.025em;}
+.footer .brand-wordmark-frame {--footer-wordmark:174px;position:relative;display:block;order:1;width:calc(var(--footer-wordmark)*1829/2048);height:calc(var(--footer-wordmark)*234/2048);overflow:hidden;}
+.footer .brand-wordmark-frame .brand-ci {position:absolute;left:calc(var(--footer-wordmark)*-106/2048);top:calc(var(--footer-wordmark)*-65/2048);width:var(--footer-wordmark);height:auto;max-width:none;}
+.footer .brand-bi {width:42px;height:42px;}
+@media(max-width:800px) {.research-campus-visual {min-height:260px;}}
+@media(max-width:600px) {
+ .footer .brand {gap:10px;}
+ .footer .brand-bi {width:32px;height:32px;}
+ .footer .brand-project-name {font-size:clamp(7px,1.85vw,10px);letter-spacing:-.04em;}
+ .footer .brand-wordmark-frame {--footer-wordmark:150px;}
+ .research-campus-visual figcaption {padding-left:12px;}
+}
+@media(prefers-reduced-motion:reduce) {.research-campus-light {animation:none;}}
