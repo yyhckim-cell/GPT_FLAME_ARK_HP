@@ -866,3 +866,14 @@ a:focus-visible,summary:focus-visible { outline:2px solid var(--teal); outline-o
  .footer-utility-links { gap:14px 20px; }
  .footer-top { white-space:nowrap; }
 }
+
+/* Keep institution identity and dismissal outside the scrolling content. */
+.partner-dialog { max-height:calc(100dvh - 44px); overflow:hidden; }
+.partner-dialog-content { display:flex; flex-direction:column; max-height:calc(100dvh - 46px); }
+.partner-dialog-header { flex:none; z-index:2; }
+.partner-dialog-body { min-height:0; overflow-y:auto; overscroll-behavior:contain; }
+.haheho-modal-content .fh-dialog.fh-page { max-height:calc(100dvh - 46px); overflow:hidden; }
+.haheho-modal-content .fh-header,
+.haheho-modal-content .fh-tabs { flex:none; }
+.haheho-modal-content .fh-page .fh-content { min-height:0; overflow-y:auto; overscroll-behavior:contain; }
+.haheho-modal-content .partner-dialog-close { z-index:3; }
