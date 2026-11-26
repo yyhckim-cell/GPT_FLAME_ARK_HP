@@ -1,7 +1,35 @@
+"use client";
+import { useEffect, useRef } from "react";
+
 export default function AnimatedHero() {
-  return <section className="cinematic-hero cinematic-hero-stills" aria-labelledby="hero-title">
-    <div className="container cinematic-stills-layout">
-    <div className="cinematic-content">
+  const stripRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const preference = matchMedia("(prefers-reduced-motion: reduce)");
+    let frame = 0;
+    const paint = () => {
+      frame = 0;
+      const distance = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+      const progress = preference.matches ? 0 : Math.min(1, Math.max(0, scrollY / distance));
+      if (stripRef.current) stripRef.current.style.transform = `translate3d(0,${-progress * innerHeight * 3}px,0)`;
+    };
+    const update = () => { if (!frame) frame = requestAnimationFrame(paint); };
+    update();
+    addEventListener("scroll", update, { passive: true });
+    addEventListener("resize", update);
+    preference.addEventListener("change", update);
+    return () => { cancelAnimationFrame(frame);removeEventListener("scroll", update);removeEventListener("resize", update);preference.removeEventListener("change", update); };
+  }, []);
+  return <section className="cinematic-hero cinematic-hero-background" aria-labelledby="hero-title">
+    <div className="cinematic-scene cinematic-full-background" aria-hidden="true">
+      <div className="cinematic-background-strip" ref={stripRef}>
+        {[0,1,2,3].map(index => <div className="cinematic-background-frame" key={index}>
+          <img src={`/hero/corridor-scene-${index}.png`} alt="" width="1672" height="941"
+            fetchPriority={index === 0 ? "high" : "auto"} decoding="async" />
+        </div>)}
+      </div>
+      <div className="cinematic-wash" />
+    </div>
+    <div className="container cinematic-content">
       <p className="cinematic-eyebrow">FLAME-ARK · MEDICAL AI RESEARCH</p>
       <h1 id="hero-title">병원을 연결하고,<br /><span>의료AI를 발전시키다.</span></h1>
       <p className="cinematic-description">의료데이터의 가치를 연결하는 병원 특화 연합학습.<br className="cinematic-desktop-break" />
@@ -11,17 +39,6 @@ export default function AnimatedHero() {
         <a className="cinematic-primary" href="/project">프로젝트 살펴보기</a>
         <a className="cinematic-secondary" href="/technology">핵심 연구기술</a>
       </div>
-    </div>
-    <div className="cinematic-stills-sequence" aria-label="의료AI 연구공간 둘러보기">
-      {[
-        "의료데이터를 분석하는 연구진과 연구공간",
-        "유리벽을 따라 이어지는 연구 복도",
-        "협업 연구실로 이어지는 복도 안쪽",
-        "의료AI 연구 사무실과 회의 공간",
-      ].map((description, index) => <img key={index} src={`/hero/corridor-scene-${index}.png`}
-        alt={description} width="1672" height="941" loading={index === 0 ? "eager" : "lazy"}
-        fetchPriority={index === 0 ? "high" : "auto"} decoding="async" />)}
-    </div>
     </div>
     <div className="container cinematic-footer">
       <p>FEDERATED LEARNING <span>·</span> CONNECTED MEDICAL INTELLIGENCE</p>
