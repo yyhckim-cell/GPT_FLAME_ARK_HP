@@ -1065,3 +1065,8 @@ a:focus-visible,summary:focus-visible { outline:2px solid var(--teal); outline-o
 .haheho-modal-content .fh-eyebrow {color:#8be5dd;}
 .haheho-modal-content .fh-logo {border-radius:8px;}
 @media(max-width:600px) {.partner-dialog-identity h2 {font-size:23px;}.partner-dialog-identity .partner-story-headline {font-size:18px;}.partner-dialog-logo {max-width:110px;}.partner-tech-flow {flex-wrap:wrap;}.partner-tech-flow>span {flex-basis:100%;}.partner-tech-item h4 {font-size:18px;}}
+
+/* Scroll-controlled forward perspective; no looping camera or lateral shake. */
+.home-page .cinematic-poster {transform-origin:57% 46%;will-change:transform;backface-visibility:hidden;}
+.home-page .cinematic-wash {background:linear-gradient(90deg,#ecf5f0ee 0%,#eaf3efe0 22%,#e4f0ee94 43%,#bddae71a 72%,#0a304a0a 100%),linear-gradient(0deg,#d7e8e9cc,transparent 30%);}
+@media(prefers-reduced-motion:reduce) {.home-page .cinematic-poster {transform:none!important;will-change:auto;}}

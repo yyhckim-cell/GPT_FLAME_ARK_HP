@@ -3,52 +3,44 @@
 import { useEffect, useRef, useState } from "react";
 
 export default function AnimatedHero() {
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
   const [reducedMotion, setReducedMotion] = useState(true);
-  const [videoFailed, setVideoFailed] = useState(false);
 
   useEffect(() => {
     const preference = matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setReducedMotion(preference.matches);
+    const image = imageRef.current;
+    let frame = 0;
+    let current = 0;
+    let target = 0;
+    const paint = () => {
+      frame = 0;
+      current += (target - current) * 0.1;
+      if (Math.abs(target - current) < 0.00015) current = target;
+      if (image) image.style.transform = `scale(${1 + current * 0.48})`;
+      if (current !== target) frame = requestAnimationFrame(paint);
+    };
+    const update = () => {
+      setReducedMotion(preference.matches);
+      const distance = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+      target = preference.matches ? 0 : Math.min(1, Math.max(0, scrollY / distance));
+      if (preference.matches) current = 0;
+      if (!frame) frame = requestAnimationFrame(paint);
+    };
     update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
     preference.addEventListener("change", update);
-    return () => preference.removeEventListener("change", update);
-  }, []);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video || videoFailed) return;
-    if (reducedMotion) {
-      video.pause();
-      return;
-    }
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !document.hidden) {
-        video.play().catch(() => { /* The poster remains visible when autoplay is unavailable. */ });
-      } else {
-        video.pause();
-      }
-    });
-    const onVisibilityChange = () => {
-      if (document.hidden) video.pause();
-      else if (video.getBoundingClientRect().bottom > 0) video.play().catch(() => {});
-    };
-    observer.observe(video);
-    document.addEventListener("visibilitychange", onVisibilityChange);
     return () => {
-      observer.disconnect();
-      document.removeEventListener("visibilitychange", onVisibilityChange);
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+      preference.removeEventListener("change", update);
     };
-  }, [reducedMotion, videoFailed]);
+  }, []);
 
   return <section className="cinematic-hero" aria-labelledby="hero-title" data-paused={reducedMotion}>
     <div className="cinematic-scene" aria-hidden="true">
-      <img className="cinematic-poster" src="/hero/research-campus.jpg" alt="" width="1920" height="1080" fetchPriority="high" />
-      {!reducedMotion && !videoFailed && <video ref={videoRef} className="cinematic-video"
-        autoPlay muted loop playsInline preload="metadata" poster="/hero/research-campus.jpg"
-        onError={() => setVideoFailed(true)}>
-        <source src="/hero/research-campus.mp4" type="video/mp4" />
-      </video>}
+      <img ref={imageRef} className="cinematic-poster" src="/hero/main-federated.jpg" alt="" width="1672" height="941" fetchPriority="high" />
       <div className="cinematic-glow" />
       <div className="cinematic-wash" />
     </div>
