@@ -1,8 +1,9 @@
+import footerHtml from "./footer.html?raw";
 import html from "./index.html?raw";
 import seeds from "./seed-links.json";
 import { projectName, siteNavigation } from "../components/site-navigation";
 
-const portalHtml = html.replaceAll("{{PROJECT_NAME}}", projectName).replaceAll(
+const portalHtml = html.replace("{{SITE_FOOTER}}", footerHtml).replaceAll("{{PROJECT_NAME}}", projectName).replaceAll(
   "{{SITE_NAVIGATION}}", siteNavigation.map(({ href, label }) => `<a href="${href}">${label}</a>`).join(""),
 );
 
