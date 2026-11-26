@@ -80,3 +80,27 @@
  .section-toolbar,.section-toolbar>div { min-width:0; max-width:100%; }
  .resource-grid,.resource-group { min-width:0; }
 }
+
+body { background:#e7eff0; }
+.login-shell { width:min(1280px,calc(100% - 80px)); margin:42px auto; min-height:620px; grid-template-columns:minmax(0,1fr) minmax(400px,.85fr); overflow:hidden; border:1px solid #b8ced3; border-radius:24px; box-shadow:0 20px 70px #12344b12; }
+.login-showcase { min-height:620px; padding:48px; background:linear-gradient(100deg,#062238bd,#0b294b5c),url('/hero/research-network.jpg') center/cover; }
+.login-pitch { max-width:470px; }
+.login-pitch h1 { font-size:clamp(36px,3.4vw,52px); }
+.login-pitch p { font-size:16px; line-height:1.85; }
+.login-side { padding:42px 32px; background:#f7faf8; }
+.login-form-card { padding:22px 12px; border:0; box-shadow:none; background:transparent; border-radius:0; }
+.portal-public-footer { padding:24px; background:#0c2639; color:#d6e7ed; }
+@media(min-width:1600px) { .login-shell { margin-block:56px; } }
+@media(max-width:900px) {
+ .login-shell { width:calc(100% - 40px); margin:25px auto; grid-template-columns:1fr; min-height:0; border-radius:18px; }
+ .login-showcase { min-height:300px; padding:36px; background-position:center 42%; }
+ .login-side { padding:26px 32px; }
+ .login-form-card { max-width:none; }
+}
+@media(max-width:600px) {
+ .login-shell { width:calc(100% - 28px); margin:18px auto; }
+ .login-showcase { min-height:280px; padding:30px 23px; }
+ .login-pitch h1 { font-size:32px; }
+ .login-side { padding:25px 22px; }
+ .login-form-card { padding:0; }
+}
