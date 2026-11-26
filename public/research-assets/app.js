@@ -89,7 +89,7 @@ async function loadSession(expectLogin = false){
   $('login-screen').classList.add('hidden');$('app-screen').classList.remove('hidden');
   await showView(ses.role==='admin'&&location.pathname.replace(/\/$/,'')==='/research/admin'?'admin':'dashboard');
 }
-async function loadLinks(){const r=await api('/api/research/links');state.links=r.items;renderStats();renderFilters();renderGroups();renderSourceTable();}
+async function loadLinks(){const r=await api('/api/research/links');state.links=r.items;renderFilters();renderGroups();renderSourceTable();}
 async function showView(view){
   if(view==='admin'&&state.role!=='admin')return;
   state.view=view;
@@ -101,19 +101,13 @@ async function showView(view){
 document.querySelectorAll('[data-view]').forEach(btn=>btn.addEventListener('click',()=>showView(btn.dataset.view)));
 $('search-input').addEventListener('input',(e)=>{state.search=e.target.value.trim().toLowerCase();renderGroups();});
 
-function renderStats(){
-  const target=$('stats');clear(target);
-  const configs=[['공통','공통 자료','◇'],['주관 채널','주관 채널','▣'],['협의체 채널','협의체','◎'],['자료','자료실','▤']];
-  for(const [group,title,icon] of configs){
-    const c=el('div','stat-card');const txt=el('div');append(txt,el('span','',title),el('strong','',String(state.links.filter(x=>x.group_name===group).length)));
-    append(c,txt,el('i','',icon)); target.appendChild(c);
-  }
-}
 function renderFilters(){
   const target=$('group-filter');clear(target);
   for(const name of ['전체',...GROUPS]){
     const btn=el('button','filter-button'+(state.filter===name?' active':''));btn.type='button';
-    append(btn,el('span','filter-glyph',GROUP_ICONS[name]),el('span','',name));
+    const count = name === '전체' ? state.links.length : state.links.filter(x=>x.group_name===name).length;
+    append(btn,el('span','filter-glyph',GROUP_ICONS[name]),el('span','filter-name',name),el('span','filter-count',String(count)));
+    btn.setAttribute('aria-label',name+' '+count+'개');
     btn.addEventListener('click',()=>{state.filter=name;renderFilters();renderGroups();});target.appendChild(btn);
   }
 }

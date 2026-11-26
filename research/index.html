@@ -63,18 +63,15 @@
   </div>
 
   <div id="app-screen" class="app-shell hidden">
-    <header class="site-header">
-      <div class="header-main">
-        <div class="brand brand-app"><img src="/brand/flame-ark-new-logo.png" alt="FLAME-ARK 로고" class="brand-logo"><div class="brand-text">FLAME-ARK<span>RESEARCH WORKSPACE</span></div></div>
-        <nav class="header-nav" aria-label="연구자 전용 주요 메뉴">
+    <main class="main-container">
+      <div class="workspace-toolbar" aria-label="연구자 도구">
+        <div class="workspace-view-actions">
           <button type="button" data-view="dashboard" class="nav-btn active">협업 허브</button>
           <button type="button" data-view="table" class="nav-btn">전체 구조 보기</button>
           <button type="button" data-view="admin" class="nav-btn hidden" id="admin-nav-btn">관리자</button>
-        </nav>
+        </div>
         <div class="header-account"><span class="role-tag" id="role-label">연구자</span><button id="logout-btn" type="button" class="text-btn">로그아웃</button></div>
       </div>
-    </header>
-    <main class="main-container">
       <section id="dashboard-view" class="view">
         <div class="dashboard-hero">
           <div class="dashboard-hero-content">
@@ -84,7 +81,6 @@
           </div>
           <div class="hero-mark" aria-hidden="true"><img src="/brand/flame-ark-new-logo.png" alt=""></div>
         </div>
-        <div class="stat-row" id="stats"></div>
         <div class="workspace-body">
           <aside class="workspace-sidebar">
             <div class="side-label">WORKSPACE MENU</div>

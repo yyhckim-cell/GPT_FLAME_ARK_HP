@@ -104,3 +104,32 @@ body { background:#e7eff0; }
  .login-side { padding:25px 22px; }
  .login-form-card { padding:0; }
 }
+
+/* One public GNB; compact workspace tools, readable research resources. */
+.workspace-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0 10px;border-bottom:1px solid #cbdde2;margin-bottom:20px;color:#20485b;}
+.workspace-view-actions{display:flex;flex-wrap:wrap;gap:6px;}
+.workspace-toolbar .nav-btn{font-size:15px;color:#4e6b7b;padding:10px 15px;}
+.workspace-toolbar .nav-btn.active,.workspace-toolbar .nav-btn:hover{background:#d6eeee;color:#096d79;}
+.workspace-toolbar .header-account{border-color:#c6dce2;}
+.workspace-toolbar .role-tag{font-size:13px;color:#126b78;border-color:#8fbcc7;}
+.workspace-toolbar .text-btn{font-size:15px;color:#36596c;}
+.dashboard-hero{min-height:200px;margin-top:20px;padding:32px 40px;}
+.dashboard-hero h1{font-size:36px;line-height:1.35;}
+.dashboard-hero p{font-size:16px;line-height:1.8;}
+.hero-mark{width:160px;height:160px;}
+.workspace-body{margin-top:28px;}
+.filter-button{font-size:16px;min-height:50px;display:flex;align-items:center;gap:10px;}
+.filter-name{flex:1;text-align:left;}
+.filter-count{margin-left:auto;min-width:25px;padding:2px 7px;border-radius:6px;background:#eef4f6;color:#577482;font-size:13px;font-variant-numeric:tabular-nums;}
+.filter-button.active .filter-count{background:#c9e9e8;color:#086b74;}
+.section-toolbar h2{font-size:28px;}
+.section-toolbar p{font-size:16px;line-height:1.7;}
+.search-box input{font-size:16px;}
+.group-header h3{font-size:20px;}
+.group-header span{font-size:14px;}
+.resource-card{padding:24px;min-height:170px;}
+.resource-card strong{font-size:18px;line-height:1.5;}
+.resource-card .card-desc{font-size:15px;line-height:1.75;color:#546f7f;}
+.resource-card .card-footer{font-size:14px;}
+.side-help p{font-size:14px;line-height:1.7;}
+@media(max-width:800px){.workspace-toolbar{flex-wrap:wrap;gap:10px;}.workspace-toolbar .header-account{padding-left:12px;margin-left:auto;}.dashboard-hero{padding:26px;}.dashboard-hero h1{font-size:30px;}.hero-mark{width:95px;height:95px;}.filter-button{font-size:15px;}.resource-grid{grid-template-columns:1fr;}}
