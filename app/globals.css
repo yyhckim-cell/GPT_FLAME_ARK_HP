@@ -1012,3 +1012,17 @@ a:focus-visible,summary:focus-visible { outline:2px solid var(--teal); outline-o
 @keyframes research-domain-light {from {opacity:.2;}to {opacity:.65;}}
 @media(max-width:800px) {.research-domain-visual {width:100%;min-height:270px;max-width:520px;margin:auto;}}
 @media(prefers-reduced-motion:reduce) {.research-domain-glow {animation:none;}}
+
+/* Research photography sits behind the full hero, with a quiet readable wash. */
+.detail-hero {isolation:isolate;}
+.detail-hero>.research-domain-visual {position:absolute;inset:0;z-index:-1;width:100%;height:100%;max-width:none;min-height:0;margin:0;pointer-events:none;}
+.detail-hero>.research-domain-visual img {object-fit:cover;object-position:center 45%;opacity:.3;mask-image:none;}
+.detail-hero>.research-domain-visual::after {background:linear-gradient(90deg,#0b253aeb 0%,#0c2d42ce 38%,#10364566 75%,#10364580 100%);}
+.detail-hero-layout {display:block;min-height:350px;padding-block:64px;}
+.detail-hero-layout>div {max-width:900px;}
+.detail-hero-lead {max-width:780px;}
+@media(max-width:800px) {
+ .detail-hero-layout {min-height:0;padding-block:42px;}
+ .detail-hero>.research-domain-visual img {object-position:65% center;opacity:.24;}
+ .detail-hero>.research-domain-visual::after {background:linear-gradient(90deg,#0b253ae8,#103645a8);}
+}

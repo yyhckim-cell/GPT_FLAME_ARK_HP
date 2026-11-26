@@ -105,7 +105,7 @@ export const researchPages: Record<string, PageContent> = {
     highlight: "CLINICAL WORKFLOW  /  PATIENT EXPERIENCE",
     sections: [
       {
-        eyebrow: "SAMSUNG MEDICAL CENTER", title: "삼성서울병원 IRB 행정지원 솔루션",
+        eyebrow: "RESEARCH GROUP 01", title: "IRB 행정지원 솔루션",
         description: "연구윤리심의(IRB)와 관련된 행정업무를 지원하는 AI 솔루션입니다.",
         entries: [
           { title: "IRB 연구행정 업무 지원", description: "IRB 심의 과정에 필요한 정보 확인과 문서 검토 등 연구행정 업무를 보조하는 솔루션을 개발합니다." },
@@ -264,6 +264,7 @@ export default function ResearchSubpage({ page }: { page: ResearchPageKey }) {
     <SiteHeader currentPath={"/" + page} />
 
     <section className="detail-hero">
+      <ResearchNetworkVisual page={page} />
       <div className="container detail-hero-layout">
         <div>
           <p className="detail-eyebrow">{content.english}</p>
@@ -271,7 +272,6 @@ export default function ResearchSubpage({ page }: { page: ResearchPageKey }) {
           <p className="detail-hero-lead">{content.lead}</p>
           {isProject && <div className="project-hero-facts"><span>연구기간 <strong>2025.04 ~ 2029.12</strong></span><span>협력체계 <strong>5개 주관 연구영역</strong></span></div>}
         </div>
-        <ResearchNetworkVisual page={page} />
       </div>
     </section>
 
