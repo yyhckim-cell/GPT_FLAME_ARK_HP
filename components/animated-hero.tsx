@@ -18,7 +18,7 @@ export default function AnimatedHero() {
       if (Math.abs(target - current) < 0.00015) current = target;
       if (journey) {
         const height = journey.parentElement?.clientHeight ?? innerHeight;
-        journey.style.transform = `translate3d(0,${-current * height * 2}px,0)`;
+        journey.style.transform = `translate3d(0,${-current * height * 0.035}px,0)`;
       }
       if (current !== target) frame = requestAnimationFrame(paint);
     };
@@ -44,11 +44,10 @@ export default function AnimatedHero() {
   return <section className="cinematic-hero" aria-labelledby="hero-title" data-paused={reducedMotion}>
     <div className="cinematic-scene" aria-hidden="true">
       <div ref={journeyRef} className="cinematic-journey">
-        {["main-illustrated", "main-connected", "main-federated"].map((image, index) => <div className="cinematic-journey-scene" key={image}>
-          <img src={`/hero/${image}.${image === "main-illustrated" ? "png" : "jpg"}`} alt="" width="1672" height="941" fetchPriority={index === 0 ? "high" : "auto"} decoding="async" />
-        </div>)}
+        <div className="cinematic-journey-scene">
+          <img src="/hero/main-research-technology.png" alt="" width="1672" height="941" fetchPriority="high" decoding="async" />
+        </div>
       </div>
-      <div className="cinematic-glow" />
       <div className="cinematic-wash" />
     </div>
     <div className="container cinematic-content">

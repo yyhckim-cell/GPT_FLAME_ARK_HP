@@ -1081,3 +1081,12 @@ a:focus-visible,summary:focus-visible { outline:2px solid var(--teal); outline-o
 .home-page .cinematic-glow {z-index:1;}
 @media(max-width:600px) {.cinematic-journey-scene>img {width:100%;height:100%;object-fit:contain;}}
 @media(prefers-reduced-motion:reduce) {.cinematic-journey {transform:none!important;will-change:auto;}}
+
+/* Clear R&D illustration: neutral background and sharp artwork. */
+.home-page .cinematic-scene{background:#fff;}
+.home-page .cinematic-scene::before{display:none;}
+.home-page .cinematic-journey{height:104%;}
+.home-page .cinematic-journey-scene{height:100%;}
+.home-page .cinematic-journey-scene>img{width:100%;height:100%;object-fit:contain;mask-image:none;}
+.home-page .cinematic-wash{background:linear-gradient(90deg,#fff 0%,#fff 25%,#ffffffed 34%,#ffffff66 45%,transparent 55%);}
+@media(max-width:800px){.home-page .cinematic-journey-scene{align-items:flex-end;}.home-page .cinematic-journey-scene>img{height:70%;object-position:right bottom;}.home-page .cinematic-wash{background:linear-gradient(180deg,#fff 0%,#fffffff2 42%,#ffffff88 65%,#ffffff33 100%);}}
