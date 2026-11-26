@@ -1,7 +1,6 @@
 import ResearchNetworkVisual from "./research-network-visual";
 import SiteHeader from "./site-header";
 import SiteFooter from "./site-footer";
-import Link from "next/link";
 import { ArrowLeft, ArrowRight, ArrowUpRight, LockKeyhole, Network, ShieldCheck } from "lucide-react";
 import BrandLockup from "@/components/brand-lockup";
 
@@ -105,6 +104,15 @@ export const researchPages: Record<string, PageContent> = {
     summary: "아래 서비스는 연구개발 목표와 실증 계획입니다. 상용 서비스 제공 여부나 의료기기 인증 완료를 의미하지 않습니다.",
     highlight: "CLINICAL WORKFLOW  /  PATIENT EXPERIENCE",
     sections: [
+      {
+        eyebrow: "SAMSUNG MEDICAL CENTER", title: "삼성서울병원 IRB 행정지원 솔루션",
+        description: "연구윤리심의(IRB)와 관련된 행정업무를 지원하는 AI 솔루션입니다.",
+        entries: [
+          { title: "IRB 연구행정 업무 지원", description: "IRB 심의 과정에 필요한 정보 확인과 문서 검토 등 연구행정 업무를 보조하는 솔루션을 개발합니다." },
+          { title: "연구 문서의 정보 활용", description: "연구 관련 문서의 정보를 정리하고 담당자가 필요한 내용을 확인할 수 있도록 지원합니다." },
+          { title: "담당자 중심의 검토", description: "AI가 제공하는 정보를 담당자의 검토와 함께 활용하여 연구행정 업무의 효율성을 높이는 것을 목표로 합니다." },
+        ],
+      },
       {
         eyebrow: "RESEARCH GROUP 02", title: "환자 중심 다학제 진료",
         description: "협진 전·중·후의 정보를 연결하고 의료진과 환자의 의사소통을 지원합니다.",
@@ -307,7 +315,7 @@ export default function ResearchSubpage({ page }: { page: ResearchPageKey }) {
           <p>CONTINUE EXPLORING</p>
           <h2>다음 연구 내용도 살펴보세요.</h2>
         </div>
-        <Link href={"/" + next.slug}>{next.title}<ArrowRight size={19}/></Link>
+        <a href={"/" + next.slug}>{next.title}</a>
       </div>
     </section>
 
