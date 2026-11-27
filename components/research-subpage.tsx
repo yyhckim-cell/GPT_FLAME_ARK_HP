@@ -296,7 +296,7 @@ export default function ResearchSubpage({ page }: { page: ResearchPageKey }) {
           </div>
           {section.description && <p>{section.description}</p>}
         </div>
-        <div className={section.layout === "timeline" ? "detail-timeline" : section.layout === "steps" ? "detail-steps" : "detail-cards"}>
+        <div className={section.layout === "timeline" ? "detail-timeline" : section.layout === "steps" && section.entries.length !== 3 ? "detail-steps" : "detail-cards"}>
           {section.entries.map((entry, index) => <article className="detail-content-card" key={entry.title}>
             <div className="detail-content-top">
               <span className="detail-content-number">{String(index + 1).padStart(2,"0")}</span>
