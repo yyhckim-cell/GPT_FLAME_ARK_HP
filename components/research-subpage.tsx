@@ -177,7 +177,7 @@ export const researchPages: Record<string, PageContent> = {
       },
       {
         eyebrow: "FEEDBACK CYCLE", title: "실증 결과를 기술 개선으로",
-        layout: "steps",
+        layout: "cards",
         entries: [
           { title: "현장 요구사항 수집", description: "의료진, 환자, 운영 담당자의 실제 사용 맥락과 요구사항을 확인합니다." },
           { title: "프로토타입 및 파일럿 평가", description: "개발 기능을 제한된 환경에서 검증하고 오류, 성능, 업무 적합성을 살펴봅니다." },
