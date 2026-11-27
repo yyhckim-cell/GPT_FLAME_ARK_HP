@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+import ResearchCouncil from "./research-council";
 import ResearchNetworkVisual from "./research-network-visual";
 import SiteHeader from "./site-header";
 import SiteFooter from "./site-footer";
@@ -287,7 +289,9 @@ export default function ResearchSubpage({ page }: { page: ResearchPageKey }) {
       </ol>
     </div></section>}
 
-    {content.sections.map((section, sectionIndex) => <section className="detail-section" key={section.eyebrow}>
+    {content.sections.map((section, sectionIndex) => <Fragment key={section.eyebrow}>
+      {page === "consortium" && section.eyebrow === "COLLABORATION" && <ResearchCouncil />}
+      <section className="detail-section">
       <div className="container">
         <div className="detail-section-heading">
           <div>
@@ -307,7 +311,7 @@ export default function ResearchSubpage({ page }: { page: ResearchPageKey }) {
           </article>)}
         </div>
       </div>
-    </section>)}
+    </section></Fragment>)}
 
     <section className="detail-next">
       <div className="container detail-next-layout">

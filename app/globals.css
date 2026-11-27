@@ -1138,3 +1138,28 @@ a:focus-visible,summary:focus-visible { outline:2px solid var(--teal); outline-o
 .cinematic-hero-background .cinematic-footer{position:absolute;bottom:30px;}
 @media(max-width:800px){.home-page .cinematic-hero-background .cinematic-content{padding-top:145px;padding-bottom:150px;}.home-page .cinematic-hero-background .cinematic-content h1{font-size:clamp(38px,6vw,60px);}.home-page .cinematic-hero-background .cinematic-wash{background:linear-gradient(180deg,#eaf3e9ef 0%,#eaf3e9e8 42%,#e0efe9a8 70%,#daebead9);}.cinematic-background-frame img{object-position:60% center;}}
 @media(prefers-reduced-motion:reduce){.cinematic-background-strip{transform:none!important;will-change:auto;}}
+
+/* Consortium governance: roles and institutions only, without personal names. */
+.research-council{padding:80px 0;background:#f1f7f8;color:#173b50;}
+.council-governance{display:grid;grid-template-columns:1fr 2.3fr;overflow:hidden;border:1px solid #b9d2da;border-radius:12px;background:#fff;position:relative;margin-bottom:36px;}
+.council-governance-title{padding:28px;background:linear-gradient(120deg,#0d2c44,#15566a);color:#fff;display:flex;flex-direction:column;justify-content:center;}
+.council-governance-title>span{font-size:14px;color:#85d9d3;}
+.council-governance-title h3{font-size:25px;margin:8px 0 0;line-height:1.4;}
+.council-governance-roles{display:grid;grid-template-columns:1fr 1.7fr .7fr;align-items:center;gap:20px;margin:0;padding:28px;}
+.council-governance-roles dt,.council-group dt{font-size:14px;color:#557381;}
+.council-governance-roles dd{margin:8px 0 0;font-size:16px;line-height:1.7;font-weight:650;}
+.council-working-groups{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;position:relative;}
+.council-group{min-width:0;overflow:hidden;border:1px solid #b9d2da;border-radius:12px;background:white;}
+.council-group header{padding:24px 22px;background:#e3f1f2;border-bottom:1px solid #c4dcdf;min-height:174px;}
+.council-group-meta{display:flex;gap:8px;align-items:center;justify-content:space-between;font-size:13px;color:#176d79;font-weight:700;}
+.council-group-meta>span:first-child{letter-spacing:.08em;}
+.council-group h3{font-size:21px;line-height:1.5;margin:14px 0 10px;word-break:keep-all;}
+.council-group header p{margin:0;font-size:14px;color:#4d6e7b;}
+.council-group-body{padding:22px;}
+.council-group h4{margin:0 0 12px;font-size:16px;}
+.council-group ul{margin:0 0 22px;padding-left:18px;font-size:16px;line-height:1.8;min-height:145px;color:#3f6070;}
+.council-group dl{border-top:1px solid #dbe7ea;margin:0;padding-top:16px;display:grid;gap:10px;}
+.council-group dl>div{display:grid;grid-template-columns:80px minmax(0,1fr);gap:8px;align-items:start;}
+.council-group dd{margin:0;font-size:14px;line-height:1.6;font-weight:650;word-break:keep-all;}
+@media(max-width:1100px){.council-working-groups{grid-template-columns:repeat(2,minmax(0,1fr));}.council-group header{min-height:0;}.council-governance{grid-template-columns:1fr;}.council-governance-roles{grid-template-columns:1fr 1.7fr .7fr;}}
+@media(max-width:600px){.research-council{padding:48px 0;}.council-working-groups{grid-template-columns:1fr;}.council-governance-roles{grid-template-columns:1fr;gap:18px;padding:22px;}.council-governance-title{padding:22px;}.council-group ul{min-height:0;}.council-group h3{font-size:22px;}}
