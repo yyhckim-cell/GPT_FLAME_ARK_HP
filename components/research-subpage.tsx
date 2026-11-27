@@ -78,7 +78,7 @@ export const researchPages: Record<string, PageContent> = {
       {
         eyebrow: "02 / FOUNDATION MODEL", title: "의료 범용 파운데이션 모델",
         description: "의료정보 간 연관성을 반영하는 멀티모달 모델의 설계와 학습, 개선을 추진합니다.",
-        layout: "steps",
+        layout: "cards",
         entries: [
           { title: "모달리티별 정보 표현", description: "텍스트·이미지·음성 등 데이터 유형별 표현을 학습할 수 있는 구조를 설계합니다." },
           { title: "공통 의료 문맥 이해", description: "서로 다른 정보의 연결성을 파악할 수 있도록 멀티모달 모델을 개발합니다." },
@@ -88,7 +88,7 @@ export const researchPages: Record<string, PageContent> = {
       {
         eyebrow: "03 / FEDERATED LEARNING", title: "병원 특화 연합학습 플랫폼",
         description: "의료기관별 보안·운영 환경과 승인 조건을 고려한 협력학습 구조입니다. 세부 데이터 처리 방식은 기관별 심의 및 확정된 구현 설계에 따라 적용합니다.",
-        layout: "steps",
+        layout: "cards",
         entries: [
           { title: "기관별 학습 환경", description: "각 의료기관의 시스템과 자원에 맞춘 학습·추론 환경 및 데이터 처리 절차를 구성합니다." },
           { title: "모델 업데이트의 협력", description: "기관에서 학습한 모델 결과를 협력학습에 반영하고, 다기관 데이터 이질성과 성능 편차를 검토합니다." },
