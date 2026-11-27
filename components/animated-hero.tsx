@@ -22,9 +22,9 @@ export default function AnimatedHero() {
   return <section className="cinematic-hero cinematic-hero-background" aria-labelledby="hero-title">
     <div className="cinematic-scene cinematic-full-background" aria-hidden="true">
       <div className="cinematic-background-strip" ref={stripRef}>
-        {[0,1,2,3].map(index => <div className="cinematic-background-frame" key={index}>
+        {[1,2,3,0].map((index, position) => <div className="cinematic-background-frame" key={index}>
           <img src={`/hero/corridor-scene-${index}.png`} alt="" width="1672" height="941"
-            fetchPriority={index === 0 ? "high" : "auto"} decoding="async" />
+            fetchPriority={position === 0 ? "high" : "auto"} decoding="async" />
         </div>)}
       </div>
       <div className="cinematic-wash" />
